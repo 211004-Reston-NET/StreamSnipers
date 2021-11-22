@@ -66,6 +66,24 @@ namespace Tests
         }
 
         [Fact]
+        public void GetAllFavoriteListShouldReturnAListOfAllFavoriteList()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                //Arrange
+                IRepository repo = new Repository(context);
+    
+                //Act
+                var test = repo.GetAllFavoriteList();
+
+                //Assert
+                Assert.NotNull(test);
+                Assert.Equal(2, test.Count);
+                Assert.Equal(1, test[0].UserId);
+            }
+        }
+
+        [Fact]
         public void GetAllFavoriteListsByUserIdShouldReturnAllFavoriteListsWithAMatchingUserId()
         {
             using (var context = new SSDBContext(_options))
@@ -189,6 +207,8 @@ namespace Tests
                 Assert.Equal(10, test.Rating);
             }
         }
+        
+
 
         ////////////////////////////// Seed Test Database //////////////////////////////
         private void Seed()

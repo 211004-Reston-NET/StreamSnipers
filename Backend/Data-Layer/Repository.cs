@@ -93,5 +93,10 @@ namespace Data_Layer
                             .AsNoTracking()
                             .FirstOrDefault(rev => rev.ReviewId == p_reviewId);
         }
+
+        public List<FavoriteList> GetAllFavoriteList()
+        {
+            return _context.FavoriteLists.ToList();
+        }
     }
 }
