@@ -14,7 +14,7 @@ namespace Data_Layer
             _context = p_context;
         }
 
-        public List<FavoriteList> GetAllFavoriteListByUserId(int p_userId)
+        public List<FavoriteList> GetFavoriteListByUserId(int p_userId)
         {
             return _context.FavoriteLists
                                 .Where(favorite => favorite.UserId == p_userId)
@@ -32,9 +32,11 @@ namespace Data_Layer
                             .ToList();
         }
 
-        public FavoriteList GetFavoriteListById(int p_FavoriteListId)
+        public FavoriteList GetFavoriteListById(int p_favoriteListId)
         {
-            return _context.FavoriteLists.FirstOrDefault(favorite => favorite.FavoriteListId == p_FavoriteListId);
+            return _context.FavoriteLists
+                                .AsNoTracking()
+                                .FirstOrDefault(favorite => favorite.FavoriteListId == p_favoriteListId);
         }
 
         public User GetUserById(int p_userId)
@@ -45,6 +47,21 @@ namespace Data_Layer
                             .Include("Recommendation")
                             .Include("Review")
                             .FirstOrDefault(user => user.UserId == p_userId);
+        }
+
+        public List<PreviousSearch> GetPreviousSearchByUserId(int p_userId)
+        {
+            return _context.PreviousSearches
+                                .Where(search => search.UserId == p_userId)
+                                .AsNoTracking()
+                                .ToList();
+        }
+
+        public PreviousSearch GetPreviousSearchById(int p_previousSearchId)
+        {
+            return _context.PreviousSearches
+                                .AsNoTracking()
+                                .FirstOrDefault(search => search.PreviousSearchId == p_previousSearchId);
         }
     }
 }
