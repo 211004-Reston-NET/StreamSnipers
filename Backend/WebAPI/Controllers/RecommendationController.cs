@@ -1,5 +1,6 @@
 ﻿using Data_Layer;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,11 +34,12 @@ namespace WebAPI.Controllers
             return Ok(_repo.GetRecommendationByUserId(id));
         }
 
-        //// POST api/<RecommendationController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        // POST api/<RecommendationController>
+        [HttpPost("Add")]
+        public IActionResult AddRecommendation([FromBody] Recommendation value)
+        {
+            return Created("api/Recommendation/Add", _repo.AddRecommendation(value));
+        }
 
         //// PUT api/<RecommendationController>/5
         //[HttpPut("{id}")]
