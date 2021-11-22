@@ -23,5 +23,15 @@ namespace Data_Layer
                             .Include("Review")
                             .ToList();
         }
+
+        public User GetUserById(int p_id)
+        {
+            return _context.Users
+                            .Include("FavoriteList")
+                            .Include("PreviousSearch")
+                            .Include("Recommendation")
+                            .Include("Review")
+                            .FirstOrDefault(user => user.UserId == p_id);
+        }
     }
 }

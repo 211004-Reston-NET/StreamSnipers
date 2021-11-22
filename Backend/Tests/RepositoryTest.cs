@@ -44,6 +44,26 @@ namespace Tests
             }
         }
 
+        [Fact]
+        public void GetUsersByIdShouldReturnAllInformationWithTheUserMatchingTheCorrectId()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                //Arrange
+                IRepository repo = new Repository(context);
+
+                //Act
+                var test = repo.GetUserById(1);
+
+                //Assert
+                Assert.NotNull(test);
+                Assert.Equal("Admin1", test.Username);
+                Assert.Equal("Admin's 1st Review", test.Review[0].Text);
+                Assert.Equal("Shrek", test.PreviousSearch[0].Search);
+                Assert.Equal("Action", test.Recommendation[0].Genre);
+                Assert.Equal("testImdbID1", test.FavoriteList[0].ImdbId);
+            }
+        }
 
         // Seed Test Database
         private void Seed()
