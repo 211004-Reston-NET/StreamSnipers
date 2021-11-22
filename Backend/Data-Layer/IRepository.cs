@@ -21,7 +21,7 @@ namespace Data_Layer
         /// <summary>
         /// Returns a List of FavoriteLists from the DB with a UserId matching p_userId.
         /// </summary>
-        /// <param name="p_userId">The ID for the user the FavoriteList references.</param>
+        /// <param name="p_userId">The ID for the User the FavoriteList references.</param>
         /// <returns>List of FavoriteLists found by UserId.</returns>
         List<FavoriteList> GetFavoriteListByUserId(int p_userId);
 
@@ -35,7 +35,7 @@ namespace Data_Layer
         /// <summary>
         /// Returns a List of PreviousSearch from the DB with a UserId matching p_userId.
         /// </summary>
-        /// <param name="p_userId">The ID for the user the PreviousSearch references.</param>
+        /// <param name="p_userId">The ID for the User the PreviousSearch references.</param>
         /// <returns>List of PreviousSearch found by UserId.</returns>
         List<PreviousSearch> GetPreviousSearchByUserId(int p_userId);
 
@@ -45,5 +45,33 @@ namespace Data_Layer
         /// <param name="p_previousSearchId">The ID for the PreviousSearch to find.</param>
         /// <returns>The PreviousSearch found by PreviousSearchId.</returns>
         PreviousSearch GetPreviousSearchById(int p_previousSearchId);
+
+        /// <summary>
+        /// Returns a List of Recommendation from the DB with a UserId matching p_userId.
+        /// </summary>
+        /// <param name="p_userId">The ID for the User the Recommendation references.</param>
+        /// <returns>List of Recommendation found by UserId.</returns>
+        List<Recommendation> GetRecommendationByUserId(int p_userId);
+
+        /// <summary>
+        /// Returns a single Recommendation from the DB with RecommendationId matching p_recommendationId.
+        /// </summary>
+        /// <param name="p_recommendationId">The ID for the Recommendation to find.</param>
+        /// <returns>The Recommendation found by RecommendationId.</returns>
+        Recommendation GetRecommendationById(int p_recommendationId);
+
+        /// <summary>
+        /// Returns a List of Review from the DB with a UserId matching p_userId.
+        /// </summary>
+        /// <param name="p_userId">The ID for the User the Review references.</param>
+        /// <returns>List of Review found by UserId.</returns>
+        List<Review> GetReviewByUserId(int p_userId);
+
+        /// <summary>
+        /// Returns a single Review from the DB with ReviewId matching p_reviewId.
+        /// </summary>
+        /// <param name="p_reviewId">The ID for the Review to find.</param>
+        /// <returns>The Review found by ReviewId.</returns>
+        Review GetReviewById(int p_reviewId);
     }
 }
