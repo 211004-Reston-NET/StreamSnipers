@@ -10,5 +10,12 @@ namespace Data_Layer
         /// </summary>
         /// <returns>Returns a list of Users.</returns>
         List<User> GetAllUsers();
+
+        /// <summary>
+        /// Returns a single User from the DB with an ID matching p_id.
+        /// </summary>
+        /// <param name="p_id">The ID of the user to find</param>
+        /// <returns>The User found by ID.</returns>
+        User GetUserById(int p_id);
     }
 }
