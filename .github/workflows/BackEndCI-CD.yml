@@ -46,9 +46,9 @@ jobs:
         New-Item -Path .\.sonar\scanner -ItemType Directory
         dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
     - name: Restore dependencies
-      run: dotnet restore [PATH TO WEB UI]
+      run: dotnet restore ./Backend/WebAPI
     - name: Test
-      run: dotnet test [PATH TO PROJECT] --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+      run: dotnet test ./Backend/WebAPI --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
       
     - name: Build and analyze
       env:
@@ -56,8 +56,8 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       shell: powershell
       run: |
-         .\.sonar\scanner\dotnet-sonarscanner begin /k:"[211004-Reston-NET_[REPO NAME GOES HERE]]" /o:"211004-reston-net" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.exclusions="**[NAME OF WEB UI FOLDER]/wwwroot/lib/**" /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.vs.vstest.reportsPaths="**/TestResult/*trx"
-          dotnet build [PATH TO WEB UI] --configuration Release
+         .\.sonar\scanner\dotnet-sonarscanner begin /k:"211004-Reston-NET_StreamSnipers" /o:"211004-reston-net" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.exclusions="**Backend/WebAPI/wwwroot/lib/**" /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.vs.vstest.reportsPaths="**/TestResult/*trx"
+          dotnet build ./Backend/WebAPI --configuration Release
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
           
           
@@ -77,12 +77,12 @@ jobs:
         dotnet-version: 5.0.x
           
     - name: Publish
-      run: dotnet publish [PATH TO WEB UI] --configuration Release -o ./publish
+      run: dotnet publish ./Backend/WebAPI --configuration Release -o ./publish
 
     - name: Deploy
       uses: azure/webapps-deploy@v2
       with:
-        app-name: [NAME OF OUR WEB APP] #Web App Name
+        app-name: Stream-Snipers-Backend #Web App Name
         slot-name: 'Production'
-        publish-profile: ${{secrets.AZURE_WEBAPP_PUBLISH_PROFILE}}
+        publish-profile: ${{secrets.AZURE_WEBAPP_BACKEND_PUBLISH_PROFILE}}
         package: ./publish
