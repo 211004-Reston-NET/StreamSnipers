@@ -1,5 +1,6 @@
 ﻿using Data_Layer;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,11 +41,12 @@ namespace WebAPI.Controllers
             return Ok(_repo.GetFavoriteListByUserId(id));
         }
 
-        //// POST api/<FavoriteListController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        // POST api/<FavoriteListController>
+        [HttpPost("Add")]
+        public IActionResult AddFavoriteList([FromBody] FavoriteList value)
+        {
+            return Created("api/FavoriteList/Add", _repo.AddFavoriteList(value));
+        }
 
         //// PUT api/<FavoriteListController>/5
         //[HttpPut("{id}")]

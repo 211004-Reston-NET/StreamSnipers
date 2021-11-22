@@ -1,5 +1,6 @@
 ﻿using Data_Layer;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,11 +34,12 @@ namespace WebAPI.Controllers
             return Ok(_repo.GetUserById(p_id));
         }
 
-        //// POST api/<UserController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        // POST api/<UserController>
+        [HttpPost("Add")]
+        public IActionResult AddUser([FromBody] User value)
+        {
+            return Created("api/User/Add", _repo.AddUser(value));
+        }
 
         //// PUT api/<UserController>/5
         //[HttpPut("{id}")]

@@ -98,5 +98,52 @@ namespace Data_Layer
         {
             return _context.FavoriteLists.ToList();
         }
+
+        public User AddUser(User p_userToAdd)
+        {
+            _context.Users.Add(p_userToAdd);
+            _context.SaveChanges();
+            return p_userToAdd;
+        }
+
+        public FavoriteList AddFavoriteList(FavoriteList p_FavoriteListToAdd)
+        {
+            var result = _context.Users
+                            .Include("FavoriteList")
+                            .FirstOrDefault(user => user.UserId == p_FavoriteListToAdd.UserId);
+            result.FavoriteList.Add(p_FavoriteListToAdd);
+            _context.SaveChanges();
+            return p_FavoriteListToAdd;
+        }
+
+        public PreviousSearch AddPreviousSearch(PreviousSearch p_previousSearchToAdd)
+        {
+            var result = _context.Users
+                            .Include("PreviousSearch")
+                            .FirstOrDefault(user => user.UserId == p_previousSearchToAdd.UserId);
+            result.PreviousSearch.Add(p_previousSearchToAdd);
+            _context.SaveChanges();
+            return p_previousSearchToAdd;
+        }
+
+        public Recommendation AddRecommendation(Recommendation p_recommendationToAdd)
+        {
+            var result = _context.Users
+                            .Include("Recommendation")
+                            .FirstOrDefault(user => user.UserId == p_recommendationToAdd.UserId);
+            result.Recommendation.Add(p_recommendationToAdd);
+            _context.SaveChanges();
+            return p_recommendationToAdd;
+        }
+
+        public Review AddReview(Review p_reviewToAdd)
+        {
+            var result = _context.Users
+                            .Include("Review")
+                            .FirstOrDefault(user => user.UserId == p_reviewToAdd.UserId);
+            result.Review.Add(p_reviewToAdd);
+            _context.SaveChanges();
+            return p_reviewToAdd;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Data_Layer;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,11 +34,12 @@ namespace WebAPI.Controllers
             return Ok(_repo.GetPreviousSearchByUserId(id));
         }
 
-        //// POST api/<PreviousSearchController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        // POST api/<PreviousSearchController>
+        [HttpPost("Add")]
+        public IActionResult AddPreviousSearch([FromBody] PreviousSearch value)
+        {
+            return Created("api/PreviousSearch/Add", _repo.AddPreviousSearch(value));
+        }
 
         //// PUT api/<PreviousSearchController>/5
         //[HttpPut("{id}")]
