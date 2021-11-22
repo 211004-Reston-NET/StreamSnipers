@@ -35,6 +35,7 @@ namespace WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });
             services.AddDbContext<SSDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SSDB")));
+            services.AddScoped<IRepository, Repository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
