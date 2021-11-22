@@ -65,7 +65,37 @@ namespace Tests
             }
         }
 
-        // Seed Test Database
+        [Fact]
+        public void GetAllFavoriteListsByUserIdShouldReturnAllFavoriteListsWithAMatchingUserId()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+
+                var test = repo.GetAllFavoriteListByUserId(1);
+
+                Assert.NotNull(test);
+                Assert.Equal(2, test.Count);
+                Assert.Equal("testImdbID1", test[0].ImdbId);
+            }
+        }
+
+        [Fact]
+        public void GetFavoriteListByIdShouldReturnSingleFavoriteListWithCorrectFavoriteListId()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+
+                var test = repo.GetFavoriteListById(2);
+
+                Assert.NotNull(test);
+                Assert.Equal(1, test.UserId);
+                Assert.Equal("testImdbID2", test.ImdbId);
+            }
+        }
+
+        ////////////////////////////// Seed Test Database //////////////////////////////
         private void Seed()
         {
             using (var context = new SSDBContext(_options))
