@@ -18,6 +18,8 @@ namespace Tests
             Seed();
         }
 
+        //////////////////// USER ////////////////////
+
         [Fact]
         public void GetAllUsersShouldReturnAllUsers()
         {
@@ -33,13 +35,13 @@ namespace Tests
                 Assert.NotNull(test);
                 Assert.Equal(2, test.Count);
                 Assert.Equal("Admin1", test[0].Username);
-                    //test User also contains Review
+                //test User also contains Review
                 Assert.Equal("Admin's 1st Review", test[0].Review[0].Text);
-                    //test User also contains PreviousSearch
+                //test User also contains PreviousSearch
                 Assert.Equal("Shrek", test[0].PreviousSearch[0].Search);
-                    //test User also contains Recommendation
+                //test User also contains Recommendation
                 Assert.Equal("Action", test[0].Recommendation[0].Genre);
-                    //test User also contains FavoriteList
+                //test User also contains FavoriteList
                 Assert.Equal("testImdbID1", test[0].FavoriteList[0].ImdbId);
             }
         }
@@ -66,13 +68,78 @@ namespace Tests
         }
 
         [Fact]
+        public void AddUserShouldAddANewUserToUserTable()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                User _user = new User()
+                {
+                    Email = "user3@test.com",
+                    Password = "Password3",
+                    Username = "User3",
+                    Review = new List<Review>
+                    {
+                        new Review
+                        {
+                            UserId = 3,
+                            Text = "User3's 1st Review",
+                            Rating = 10
+                        }
+                    },
+                    PreviousSearch = new List<PreviousSearch>
+                    {
+                        new PreviousSearch
+                        {
+                            UserId = 3,
+                            Search = "Men In Black II"
+                        }
+                    },
+                    Recommendation = new List<Recommendation>
+                    {
+                        new Recommendation
+                        {
+                            UserId = 3,
+                            Genre = "Action"
+                        }
+                    },
+                    FavoriteList = new List<FavoriteList>
+                    {
+                        new FavoriteList
+                        {
+                            UserId = 3,
+                            ImdbId = "3ImdbID"
+                        }
+                    }
+                };
+
+                repo.AddUser(_user);
+
+                using (var _context = new SSDBContext(_options))
+                {
+                    List<User> result = repo.GetAllUsers();
+
+                    Assert.NotNull(result);
+                    Assert.Equal(3, result.Count);
+                    Assert.Equal(3, result[2].Review[0].ReviewId);
+                    Assert.Equal("User3's 1st Review", result[2].Review[0].Text);
+                    Assert.Equal("Men In Black II", result[2].PreviousSearch[0].Search);
+                    Assert.Equal("Action", result[2].Recommendation[0].Genre);
+                    Assert.Equal("3ImdbID", result[2].FavoriteList[0].ImdbId);
+                }
+            }
+        }
+
+        //////////////////// FavoriteList ////////////////////
+
+        [Fact]
         public void GetAllFavoriteListShouldReturnAListOfAllFavoriteList()
         {
             using (var context = new SSDBContext(_options))
             {
                 //Arrange
                 IRepository repo = new Repository(context);
-    
+
                 //Act
                 var test = repo.GetAllFavoriteList();
 
@@ -114,6 +181,33 @@ namespace Tests
         }
 
         [Fact]
+        public void AddFavoriteListShouldBeAddedToAUserFoundById()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                FavoriteList _favoriteToAdd = new FavoriteList
+                {
+                    UserId = 2,
+                    ImdbId = "2Imbd4Imbd"
+                };
+
+                repo.AddFavoriteList(_favoriteToAdd);
+
+                using (var _context = new SSDBContext(_options))
+                {
+                    List<User> result = repo.GetAllUsers();
+                    
+                    Assert.NotNull(result);
+                    Assert.Single(result[1].FavoriteList);
+                    Assert.Equal("2Imbd4Imbd", result[1].FavoriteList[0].ImdbId);
+                }
+            }
+        }
+
+        //////////////////// PreviousSearch ////////////////////
+
+        [Fact]
         public void GetPreviousSearchByUserIdShouldReturnAllPreviousSearchesWithMatchingUserId()
         {
             using (var context = new SSDBContext(_options))
@@ -143,6 +237,33 @@ namespace Tests
                 Assert.Equal("Shrek 2", test.Search);
             }
         }
+
+        [Fact]
+        public void AddPreviousSearchShouldBeAddedToAUserFoundById()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                PreviousSearch _previousSearchToAdd = new PreviousSearch
+                {
+                    UserId = 2,
+                    Search = "Dune"
+                };
+
+                repo.AddPreviousSearch(_previousSearchToAdd);
+
+                using (var _context = new SSDBContext(_options))
+                {
+                    List<User> result = repo.GetAllUsers();
+
+                    Assert.NotNull(result);
+                    Assert.Single(result[1].PreviousSearch);
+                    Assert.Equal("Dune", result[1].PreviousSearch[0].Search);
+                }
+            }
+        }
+
+        //////////////////// Recommendation ////////////////////
 
         [Fact]
         public void GetRecommendationByUserIdShouldReturnAllRecommendationesWithMatchingUserId()
@@ -176,6 +297,33 @@ namespace Tests
         }
 
         [Fact]
+        public void AddRecommendationShouldBeAddedToAUserFoundById()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                Recommendation _recommendationToAdd = new Recommendation
+                {
+                    UserId = 2,
+                    Genre = "SciFi"
+                };
+
+                repo.AddRecommendation(_recommendationToAdd);
+
+                using (var _context = new SSDBContext(_options))
+                {
+                    List<User> result = repo.GetAllUsers();
+
+                    Assert.NotNull(result);
+                    Assert.Single(result[1].Recommendation);
+                    Assert.Equal("SciFi", result[1].Recommendation[0].Genre);
+                }
+            }
+        }
+
+        //////////////////// Review ////////////////////
+
+        [Fact]
         public void GetReviewByUserIdShouldReturnAllReviewesWithMatchingUserId()
         {
             using (var context = new SSDBContext(_options))
@@ -207,7 +355,33 @@ namespace Tests
                 Assert.Equal(10, test.Rating);
             }
         }
-        
+
+        [Fact]
+        public void AddReviewShouldBeAddedToAUserFoundById()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                Review _reviewToAdd = new Review
+                {
+                    UserId = 2,
+                    Text = "Movie Sucked",
+                    Rating = 1
+                };
+
+                repo.AddReview(_reviewToAdd);
+
+                using (var _context = new SSDBContext(_options))
+                {
+                    List<User> result = repo.GetAllUsers();
+
+                    Assert.NotNull(result);
+                    Assert.Single(result[1].Review);
+                    Assert.Equal("Movie Sucked", result[1].Review[0].Text);
+                    Assert.Equal(1, result[1].Review[0].Rating);
+                }
+            }
+        }
 
 
         ////////////////////////////// Seed Test Database //////////////////////////////

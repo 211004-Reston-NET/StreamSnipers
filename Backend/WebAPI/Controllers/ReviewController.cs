@@ -1,5 +1,6 @@
 ﻿using Data_Layer;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,11 +35,12 @@ namespace WebAPI.Controllers
             return Ok(_repo.GetReviewByUserId(id));
         }
 
-        //// POST api/<ReviewController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        // POST api/<ReviewController>
+        [HttpPost("Add")]
+        public IActionResult CreateReview([FromBody] Review value)
+        {
+            return Created("api/Review/Add", _repo.AddReview(value));
+        }
 
         //// PUT api/<ReviewController>/5
         //[HttpPut("{id}")]
