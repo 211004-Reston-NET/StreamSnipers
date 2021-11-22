@@ -72,7 +72,7 @@ namespace Tests
             {
                 IRepository repo = new Repository(context);
 
-                var test = repo.GetAllFavoriteListByUserId(1);
+                var test = repo.GetFavoriteListByUserId(1);
 
                 Assert.NotNull(test);
                 Assert.Equal(2, test.Count);
@@ -92,6 +92,37 @@ namespace Tests
                 Assert.NotNull(test);
                 Assert.Equal(1, test.UserId);
                 Assert.Equal("testImdbID2", test.ImdbId);
+            }
+        }
+
+        [Fact]
+        public void GetPreviousSearchByUserIdShouldReturnAllPreviousSearchesWithMatchingUserId()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+
+                var test = repo.GetPreviousSearchByUserId(1);
+
+                Assert.NotNull(test);
+                Assert.Equal(2, test.Count);
+                Assert.Equal("Shrek 2", test[1].Search);
+                Assert.Equal(1, test[0].UserId);
+            }
+        }
+
+        [Fact]
+        public void GetPreviousSearchByIdShouldReturnSinglePreviousSearchWithCorrectPreviousSearchId()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+
+                var test = repo.GetPreviousSearchById(2);
+
+                Assert.NotNull(test);
+                Assert.Equal(1, test.UserId);
+                Assert.Equal("Shrek 2", test.Search);
             }
         }
 
