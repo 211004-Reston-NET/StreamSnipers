@@ -59,5 +59,19 @@ namespace Data_Layer
         /// <param name="p_recommendationId">The ID for the Recommendation to find.</param>
         /// <returns>The Recommendation found by RecommendationId.</returns>
         Recommendation GetRecommendationById(int p_recommendationId);
+
+        /// <summary>
+        /// Returns a List of Review from the DB with a UserId matching p_userId.
+        /// </summary>
+        /// <param name="p_userId">The ID for the User the Review references.</param>
+        /// <returns>List of Review found by UserId.</returns>
+        List<Review> GetReviewByUserId(int p_userId);
+
+        /// <summary>
+        /// Returns a single Review from the DB with ReviewId matching p_reviewId.
+        /// </summary>
+        /// <param name="p_reviewId">The ID for the Review to find.</param>
+        /// <returns>The Review found by ReviewId.</returns>
+        Review GetReviewById(int p_reviewId);
     }
 }

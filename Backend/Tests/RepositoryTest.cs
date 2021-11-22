@@ -157,7 +157,38 @@ namespace Tests
             }
         }
 
+        [Fact]
+        public void GetReviewByUserIdShouldReturnAllReviewesWithMatchingUserId()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
 
+                var test = repo.GetReviewByUserId(1);
+
+                Assert.NotNull(test);
+                Assert.Equal(2, test.Count);
+                Assert.Equal("Admin's 1st Review", test[0].Text);
+                Assert.Equal(5, test[0].Rating);
+                Assert.Equal(1, test[0].UserId);
+            }
+        }
+
+        [Fact]
+        public void GetReviewByIdShouldReturnSingleReviewWithCorrectReviewId()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+
+                var test = repo.GetReviewById(2);
+
+                Assert.NotNull(test);
+                Assert.Equal(1, test.UserId);
+                Assert.Equal("Admin's 2nd Review", test.Text);
+                Assert.Equal(10, test.Rating);
+            }
+        }
 
         ////////////////////////////// Seed Test Database //////////////////////////////
         private void Seed()
