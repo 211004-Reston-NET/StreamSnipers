@@ -63,5 +63,20 @@ namespace Data_Layer
                                 .AsNoTracking()
                                 .FirstOrDefault(search => search.PreviousSearchId == p_previousSearchId);
         }
+
+        public List<Recommendation> GetRecommendationByUserId(int p_userId)
+        {
+            return _context.Recommendations
+                                .Where(recomm => recomm.UserId == p_userId)
+                                .AsNoTracking()
+                                .ToList();
+        }
+
+        public Recommendation GetRecommendationById(int p_recommendationId)
+        {
+            return _context.Recommendations
+                                .AsNoTracking()
+                                .FirstOrDefault(recomm => recomm.RecommendationId == p_recommendationId);
+        }
     }
 }

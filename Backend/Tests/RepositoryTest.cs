@@ -126,6 +126,39 @@ namespace Tests
             }
         }
 
+        [Fact]
+        public void GetRecommendationByUserIdShouldReturnAllRecommendationesWithMatchingUserId()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+
+                var test = repo.GetRecommendationByUserId(1);
+
+                Assert.NotNull(test);
+                Assert.Equal(2, test.Count);
+                Assert.Equal("Horror", test[1].Genre);
+                Assert.Equal(1, test[0].UserId);
+            }
+        }
+
+        [Fact]
+        public void GetRecommendationByIdShouldReturnSingleRecommendationWithCorrectRecommendationId()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+
+                var test = repo.GetRecommendationById(2);
+
+                Assert.NotNull(test);
+                Assert.Equal(1, test.UserId);
+                Assert.Equal("Horror", test.Genre);
+            }
+        }
+
+
+
         ////////////////////////////// Seed Test Database //////////////////////////////
         private void Seed()
         {
