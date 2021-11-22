@@ -78,5 +78,20 @@ namespace Data_Layer
                                 .AsNoTracking()
                                 .FirstOrDefault(recomm => recomm.RecommendationId == p_recommendationId);
         }
+
+        public List<Review> GetReviewByUserId(int p_userId)
+        {            
+            return _context.Reviews
+                            .Where(rev => rev.UserId == p_userId)
+                            .AsNoTracking()
+                            .ToList();
+        }
+
+        public Review GetReviewById(int p_reviewId)
+        {
+            return _context.Reviews
+                            .AsNoTracking()
+                            .FirstOrDefault(rev => rev.ReviewId == p_reviewId);
+        }
     }
 }
