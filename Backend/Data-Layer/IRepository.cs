@@ -19,6 +19,12 @@ namespace Data_Layer
         User GetUserById(int p_userId);
 
         /// <summary>
+        /// Will return a list of all FavoriteLists
+        /// </summary>
+        /// <returns>The List of FavoriteLists</returns>
+        List<FavoriteList> GetAllFavoriteList();
+
+        /// <summary>
         /// Returns a List of FavoriteLists from the DB with a UserId matching p_userId.
         /// </summary>
         /// <param name="p_userId">The ID for the User the FavoriteList references.</param>
