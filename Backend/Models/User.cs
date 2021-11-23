@@ -8,6 +8,9 @@ namespace Models
     public class User
     {
         private string _email;
+        private string _password;
+        private string _username;
+
         [Key]
         public int UserId { get; set; }
 
@@ -16,19 +19,44 @@ namespace Models
         public string Email 
         { 
             get { return _email;}
-            set { if (!Regex.IsMatch(value, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+            set 
+            { 
+                if (!Regex.IsMatch(value, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
                 {
                     throw new Exception("Not a valid email address");
                 }
-                _email = value; }
+                _email = value; 
+            }
         }
 
         [Required]
-        public string Password { get; set; }
+        public string Password 
+        { 
+            get { return _password; }
+            set 
+            { 
+                if (!Regex.IsMatch(value, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$")) 
+                {
+                    throw new Exception("Not a valid password, password must containt at least 1 Uppercase letter, 1 lowercase letter, 1 Special character and 1 number.");
+                }
+                _password = value;
+            } 
+        }
 
         [MaxLength(40)]
         [Required]
-        public string Username { get; set; }
+        public string Username 
+        { 
+            get { return _username; }
+            set
+            {
+                if (!Regex.IsMatch(value, @"^((?!\s*$).+){4,}$"))
+                {
+                    throw new Exception("Not a valiud username.");
+                }
+                _username = value;
+            }
+        }
 
         public bool Admin { get; set; }
         public List<Review> Review { get; set; }
