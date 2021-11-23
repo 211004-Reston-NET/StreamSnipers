@@ -8,7 +8,6 @@ namespace Models
 
         [Required]
         public int UserId { get; set; }
-        public User User { get; set; }
 
         [Required]
         public string Search { get; set; }
