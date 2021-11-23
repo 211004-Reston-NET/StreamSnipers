@@ -47,8 +47,9 @@ jobs:
         dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
     - name: Restore dependencies
       run: dotnet restore ./Backend/WebAPI
+      
     - name: Test
-      run: dotnet test ./Backend/WebAPI --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+      run: dotnet test ./Backend --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
       
     - name: Build and analyze
       env:
@@ -77,7 +78,7 @@ jobs:
         dotnet-version: 5.0.x
           
     - name: Publish
-      run: dotnet publish ./Backend/WebAPI --configuration Release -o ./Backend/WebAPI/publish
+      run: dotnet publish Backend/WebAPI/ --configuration Release -o ./publish
 
     - name: Deploy
       uses: azure/webapps-deploy@v2
@@ -85,4 +86,4 @@ jobs:
         app-name: Stream-Snipers-Backend #Web App Name
         slot-name: 'Production'
         publish-profile: ${{secrets.AZURE_WEBAPP_BACKEND_PUBLISH_PROFILE}}
-        package: ./Backend/WebAPI/publish
+        package: ./publish

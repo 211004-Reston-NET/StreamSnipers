@@ -47,10 +47,11 @@ namespace WebAPI.Controllers
         //{
         //}
 
-        //// DELETE api/<RecommendationController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/<RecommendationController>/5
+        [HttpDelete("{id}")]
+        public IActionResult DeleteRecommendationById(int id)
+        {
+            return Ok(_repo.DeleteRecommendationById(id));
+        }
     }
 }

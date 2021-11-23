@@ -47,10 +47,11 @@ namespace WebAPI.Controllers
         //{
         //}
 
-        //// DELETE api/<PreviousSearchController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/<PreviousSearchController>/5
+        [HttpDelete("{id}")]
+        public IActionResult DeletePreviousSearchById(int id)
+        {
+            return Ok(_repo.DeletePreviousSearchById(id));
+        }
     }
 }

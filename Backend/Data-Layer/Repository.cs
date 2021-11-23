@@ -145,5 +145,45 @@ namespace Data_Layer
             _context.SaveChanges();
             return p_reviewToAdd;
         }
+
+        public User DeleteUserById(int p_userIdToDelete)
+        {
+            var result = _context.Users.FirstOrDefault(user => user.UserId == p_userIdToDelete);
+            _context.Users.Remove(result);
+            _context.SaveChanges();
+            return result; 
+        }
+
+        public FavoriteList DeleteFavoriteListById(int p_favoriteListIdToRemove)
+        {
+            var result = _context.FavoriteLists.FirstOrDefault(fav => fav.FavoriteListId == p_favoriteListIdToRemove);
+            _context.FavoriteLists.Remove(result);
+            _context.SaveChanges();
+            return result;
+        }
+
+        public PreviousSearch DeletePreviousSearchById(int p_previousSearchId)
+        {
+            var result = _context.PreviousSearches.FirstOrDefault(srch => srch.PreviousSearchId == p_previousSearchId);
+            _context.PreviousSearches.Remove(result);
+            _context.SaveChanges();
+            return result;
+        }
+
+        public Recommendation DeleteRecommendationById(int p_recommendationId)
+        {
+            var result = _context.Recommendations.FirstOrDefault(srch => srch.RecommendationId == p_recommendationId);
+            _context.Recommendations.Remove(result);
+            _context.SaveChanges();
+            return result;
+        }
+
+        public Review DeleteReviewById(int p_reviewId)
+        {
+            var result = _context.Reviews.FirstOrDefault(srch => srch.ReviewId == p_reviewId);
+            _context.Reviews.Remove(result);
+            _context.SaveChanges();
+            return result;
+        }
     }
 }
