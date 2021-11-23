@@ -8,6 +8,8 @@ import { LoginComponent } from './Login/login/login.component';
 import { ReviewComponent } from './Review/review/review.component';
 import { SearchComponent } from './Search/search/search.component';
 import { RecommendComponent } from './Recommend/recommend/recommend.component';
+import { HomeComponentModule } from './Home/home/home.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { RecommendComponent } from './Recommend/recommend/recommend.component';
     RecommendComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HomeComponentModule
   ],
   providers: [],
   bootstrap: [AppComponent]

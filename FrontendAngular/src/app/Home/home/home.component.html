@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <h1 p> Stream Snipers</h1>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
 <div>
     <button class="btn btn-primary text-white" >Home</button>
     <button class="btn btn-primary text-white" >Favorites</button>
@@ -26,8 +29,8 @@
     </tr>
     <tr>
         <th>
-            <button class="favouri" (click)="isFavoritee(x.ad_Id)">
-                <i class="fa" [ngClass]="{'fa-heart' : isFavorite , 'fa-heart-o': !isFavorite }"></i>
+            <button mat-icon-button (click)="toggleSelected()">
+                <i class="material-icons">favorite</i> 
             </button>
         </th>
         <th>Shawshank Redemption</th>
@@ -41,9 +44,7 @@
     </tr>
     <tr>
         <th>
-            <button class="favouri" (click)="isFavoritee(x.ad_Id)">
-                <i class="fa" [ngClass]="{'fa-heart' : isFavorite , 'fa-heart-o': !isFavorite }"></i>
-            </button>
+            <app-favorite-button></app-favorite-button>
         </th>
         <th>Avengers: Endgame</th>
         <th>Action</th>
@@ -60,13 +61,13 @@
 
                 <mat-icon
                   *ngIf="selected"
-                  aria-label="Example icon-button with a heart icon">
+                  class="material-icons">
                   favorite
                 </mat-icon>
               
                 <mat-icon
                   *ngIf="!selected"
-                  aria-label="Example icon-button with a heart icon">
+                  class="material-icons">
                   favorite_border
                 </mat-icon>
               
