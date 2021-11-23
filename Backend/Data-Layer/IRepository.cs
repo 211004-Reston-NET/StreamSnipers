@@ -27,6 +27,13 @@ namespace Data_Layer
         User AddUser(User p_userToAdd);
 
         /// <summary>
+        /// Removes a User from the DB as well as the data from the other tables that references it.
+        /// </summary>
+        /// <param name="p_userIdToDelete">The UserId that will be deleted</param>
+        /// <returns>The User that will be deleted</returns>
+        User DeleteUserById(int p_userIdToDelete);
+
+        /// <summary>
         /// Will return a list of all FavoriteLists
         /// </summary>
         /// <returns>The List of FavoriteLists</returns>
@@ -54,6 +61,13 @@ namespace Data_Layer
         FavoriteList AddFavoriteList(FavoriteList p_FavoriteListToAdd);
 
         /// <summary>
+        /// Deletes a favoriteList from DB that is found by its FavoriteListId.
+        /// </summary>
+        /// <param name="p_favoriteListIdToRemove">The Id for the FavoriteList to remove</param>
+        /// <returns>The FavoriteList that was removed.</returns>
+        FavoriteList DeleteFavoriteListById(int p_favoriteListIdToRemove);
+
+        /// <summary>
         /// Returns a List of PreviousSearch from the DB with a UserId matching p_userId.
         /// </summary>
         /// <param name="p_userId">The ID for the User the PreviousSearch references.</param>
@@ -73,6 +87,13 @@ namespace Data_Layer
         /// <param name="p_previousSearchToAdd">The PreviousSearch to add, also contains the UserId to look for.</param>
         /// <returns>The PreviousSearch that got added.</returns>
         PreviousSearch AddPreviousSearch(PreviousSearch p_previousSearchToAdd);
+
+        /// <summary>
+        /// Deletes a PreviousSearch from DB that is found by its PreviousSearchId.
+        /// </summary>
+        /// <param name="p_previousSearchId">The Id for the PreviousSearch to remove</param>
+        /// <returns>The PreviousSearch that was removed.</returns>
+        PreviousSearch DeletePreviousSearchById(int p_previousSearchId);
 
         /// <summary>
         /// Returns a List of Recommendation from the DB with a UserId matching p_userId.
@@ -96,6 +117,13 @@ namespace Data_Layer
         Recommendation AddRecommendation(Recommendation p_recommendationToAdd);
 
         /// <summary>
+        /// Deletes a Recommendation from DB that is found by its RecommendationId.
+        /// </summary>
+        /// <param name="p_recommendationId">The Id for the Recommendation to remove</param>
+        /// <returns>The Recommendation that was removed.</returns>
+        Recommendation DeleteRecommendationById(int p_recommendationId);
+
+        /// <summary>
         /// Returns a List of Review from the DB with a UserId matching p_userId.
         /// </summary>
         /// <param name="p_userId">The ID for the User the Review references.</param>
@@ -115,5 +143,12 @@ namespace Data_Layer
         /// <param name="p_reviewToAdd">The Review to add, also contains the UserId to look for.</param>
         /// <returns>The Review that got added.</returns>
         Review AddReview(Review p_reviewToAdd);
+
+        /// <summary>
+        /// Deletes a Review from DB that is found by its ReviewId.
+        /// </summary>
+        /// <param name="p_reviewId">The Id for the Review to remove</param>
+        /// <returns>The Review that was removed.</returns>
+        Review DeleteReviewById(int p_reviewId);
     }
 }

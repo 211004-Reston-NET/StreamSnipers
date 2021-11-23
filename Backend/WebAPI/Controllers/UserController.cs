@@ -47,10 +47,11 @@ namespace WebAPI.Controllers
         //{
         //}
 
-        //// DELETE api/<UserController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/<UserController>/5
+        [HttpDelete("{id}")]
+        public IActionResult DeleteUserById(int id)
+        {
+            return Ok(_repo.DeleteUserById(id));
+        }
     }
 }
