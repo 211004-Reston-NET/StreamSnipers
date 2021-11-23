@@ -77,7 +77,7 @@ jobs:
         dotnet-version: 5.0.x
           
     - name: Publish
-      run: dotnet publish ./Backend/WebAPI --configuration Release -o ./Backend/WebAPI/publish
+      run: dotnet publish ./Backend/WebAPI --configuration Release -o ./publish
 
     - name: Deploy
       uses: azure/webapps-deploy@v2
