@@ -54,10 +54,11 @@ namespace WebAPI.Controllers
         //{
         //}
 
-        //// DELETE api/<FavoriteListController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/<FavoriteListController>/5
+        [HttpDelete("{id}")]
+        public IActionResult DeleteFavoriteListById(int id)
+        {
+            return Ok(_repo.DeleteFavoriteListById(id));
+        }
     }
 }

@@ -48,10 +48,11 @@ namespace WebAPI.Controllers
         //{
         //}
 
-        //// DELETE api/<ReviewController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/<ReviewController>/5
+        [HttpDelete("{id}")]
+        public IActionResult DeleteReviewById(int id)
+        {
+            return Ok(_repo.DeleteReviewById(id));
+        }
     }
 }

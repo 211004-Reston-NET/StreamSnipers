@@ -27,10 +27,8 @@ namespace Tests
             {
                 //Arrange
                 IRepository repo = new Repository(context);
-
                 //Act
                 var test = repo.GetAllUsers();
-
                 //Assert
                 Assert.NotNull(test);
                 Assert.Equal(2, test.Count);
@@ -53,10 +51,8 @@ namespace Tests
             {
                 //Arrange
                 IRepository repo = new Repository(context);
-
                 //Act
                 var test = repo.GetUserById(1);
-
                 //Assert
                 Assert.NotNull(test);
                 Assert.Equal("Admin1", test.Username);
@@ -112,13 +108,10 @@ namespace Tests
                         }
                     }
                 };
-
                 repo.AddUser(_user);
-
                 using (var _context = new SSDBContext(_options))
                 {
                     List<User> result = repo.GetAllUsers();
-
                     Assert.NotNull(result);
                     Assert.Equal(3, result.Count);
                     Assert.Equal(3, result[2].Review[0].ReviewId);
@@ -127,6 +120,30 @@ namespace Tests
                     Assert.Equal("Action", result[2].Recommendation[0].Genre);
                     Assert.Equal("3ImdbID", result[2].FavoriteList[0].ImdbId);
                 }
+            }
+        }
+
+        [Fact]
+        public void DeleteUserByIdShouldRemoveTheSpecificUserFromTheDatabaseAsWellAsTheTablesItReferences()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                int _userId = 1;
+                repo.DeleteUserById(_userId);
+                using (var resultContext = new SSDBContext(_options))
+                {
+                    List<User> userResult = repo.GetAllUsers();
+                    List<FavoriteList> favoriteResult = repo.GetFavoriteListByUserId(_userId);
+                    List<PreviousSearch> searchResult = repo.GetPreviousSearchByUserId(_userId);
+                    List<Recommendation> recommendationResult = repo.GetRecommendationByUserId(_userId);
+                    List<Review> reviewResult = repo.GetReviewByUserId(_userId);
+                    Assert.Single(userResult);
+                    Assert.Empty(favoriteResult);
+                    Assert.Empty(searchResult);
+                    Assert.Empty(recommendationResult);
+                    Assert.Empty(reviewResult);
+                }   
             }
         }
 
@@ -139,10 +156,8 @@ namespace Tests
             {
                 //Arrange
                 IRepository repo = new Repository(context);
-
                 //Act
                 var test = repo.GetAllFavoriteList();
-
                 //Assert
                 Assert.NotNull(test);
                 Assert.Equal(2, test.Count);
@@ -156,9 +171,7 @@ namespace Tests
             using (var context = new SSDBContext(_options))
             {
                 IRepository repo = new Repository(context);
-
                 var test = repo.GetFavoriteListByUserId(1);
-
                 Assert.NotNull(test);
                 Assert.Equal(2, test.Count);
                 Assert.Equal("testImdbID1", test[0].ImdbId);
@@ -171,9 +184,7 @@ namespace Tests
             using (var context = new SSDBContext(_options))
             {
                 IRepository repo = new Repository(context);
-
                 var test = repo.GetFavoriteListById(2);
-
                 Assert.NotNull(test);
                 Assert.Equal(1, test.UserId);
                 Assert.Equal("testImdbID2", test.ImdbId);
@@ -191,9 +202,7 @@ namespace Tests
                     UserId = 2,
                     ImdbId = "2Imbd4Imbd"
                 };
-
                 repo.AddFavoriteList(_favoriteToAdd);
-
                 using (var _context = new SSDBContext(_options))
                 {
                     List<User> result = repo.GetAllUsers();
@@ -201,6 +210,24 @@ namespace Tests
                     Assert.NotNull(result);
                     Assert.Single(result[1].FavoriteList);
                     Assert.Equal("2Imbd4Imbd", result[1].FavoriteList[0].ImdbId);
+                }
+            }
+        }
+
+        [Fact]
+        public void DeleteFavoriteListByIdShouldRemoveOnlyTheFavoriteListWithMatchingIdFromDb()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                int _favoriteListId = 1;
+                repo.DeleteFavoriteListById(_favoriteListId);
+                using (var contextResult = new SSDBContext(_options))
+                {
+                    FavoriteList result = repo.GetFavoriteListById(_favoriteListId);
+                    List<FavoriteList> listOfRemainingFavList = repo.GetFavoriteListByUserId(1);
+                    Assert.Null(result);
+                    Assert.Single(listOfRemainingFavList);
                 }
             }
         }
@@ -213,9 +240,7 @@ namespace Tests
             using (var context = new SSDBContext(_options))
             {
                 IRepository repo = new Repository(context);
-
                 var test = repo.GetPreviousSearchByUserId(1);
-
                 Assert.NotNull(test);
                 Assert.Equal(2, test.Count);
                 Assert.Equal("Shrek 2", test[1].Search);
@@ -229,9 +254,7 @@ namespace Tests
             using (var context = new SSDBContext(_options))
             {
                 IRepository repo = new Repository(context);
-
                 var test = repo.GetPreviousSearchById(2);
-
                 Assert.NotNull(test);
                 Assert.Equal(1, test.UserId);
                 Assert.Equal("Shrek 2", test.Search);
@@ -249,16 +272,31 @@ namespace Tests
                     UserId = 2,
                     Search = "Dune"
                 };
-
                 repo.AddPreviousSearch(_previousSearchToAdd);
-
                 using (var _context = new SSDBContext(_options))
                 {
                     List<User> result = repo.GetAllUsers();
-
                     Assert.NotNull(result);
                     Assert.Single(result[1].PreviousSearch);
                     Assert.Equal("Dune", result[1].PreviousSearch[0].Search);
+                }
+            }
+        }
+
+        [Fact]
+        public void DeletePreviousSearchByIdShouldRemovePreviousSearchItFoundById()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                int _searchId = 1;
+                repo.DeletePreviousSearchById(_searchId);
+                using (var contextResult = new SSDBContext(_options))
+                {
+                    PreviousSearch result = repo.GetPreviousSearchById(_searchId);
+                    List<PreviousSearch> remainingPreviousSearch = repo.GetPreviousSearchByUserId(1);
+                    Assert.Null(result);
+                    Assert.Single(remainingPreviousSearch);
                 }
             }
         }
@@ -321,6 +359,24 @@ namespace Tests
             }
         }
 
+        [Fact]
+        public void DeleteRecommendationByIdShouldRemoveRecommendationItFoundById()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                int _searchId = 1;
+                repo.DeleteRecommendationById(_searchId);
+                using (var contextResult = new SSDBContext(_options))
+                {
+                    Recommendation result = repo.GetRecommendationById(_searchId);
+                    List<Recommendation> remainingRecommendation = repo.GetRecommendationByUserId(1);
+                    Assert.Null(result);
+                    Assert.Single(remainingRecommendation);
+                }
+            }
+        }
+
         //////////////////// Review ////////////////////
 
         [Fact]
@@ -379,6 +435,24 @@ namespace Tests
                     Assert.Single(result[1].Review);
                     Assert.Equal("Movie Sucked", result[1].Review[0].Text);
                     Assert.Equal(1, result[1].Review[0].Rating);
+                }
+            }
+        }
+
+        [Fact]
+        public void DeleteReviewByIdShouldRemoveReviewItFoundById()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                int _searchId = 1;
+                repo.DeleteReviewById(_searchId);
+                using (var contextResult = new SSDBContext(_options))
+                {
+                    Review result = repo.GetReviewById(_searchId);
+                    List<Review> remainingReview = repo.GetReviewByUserId(1);
+                    Assert.Null(result);
+                    Assert.Single(remainingReview);
                 }
             }
         }
