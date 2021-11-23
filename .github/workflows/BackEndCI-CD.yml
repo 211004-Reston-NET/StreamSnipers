@@ -47,6 +47,7 @@ jobs:
         dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
     - name: Restore dependencies
       run: dotnet restore ./Backend/WebAPI
+      
     - name: Test
       run: dotnet test ./Backend --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
       
