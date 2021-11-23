@@ -77,7 +77,7 @@ jobs:
         dotnet-version: 5.0.x
           
     - name: Publish
-      run: dotnet publish ./Backend/WebAPI --configuration Release -o ./publish
+      run: dotnet publish Backend/ --configuration Release -o ./publish
 
     - name: Deploy
       uses: azure/webapps-deploy@v2
@@ -85,4 +85,4 @@ jobs:
         app-name: Stream-Snipers-Backend #Web App Name
         slot-name: 'Production'
         publish-profile: ${{secrets.AZURE_WEBAPP_BACKEND_PUBLISH_PROFILE}}
-        package: ./Backend/WebAPI/publish
+        package: ./publish
