@@ -36,6 +36,16 @@ namespace WebAPI
             });
             services.AddDbContext<SSDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SSDB")));
             services.AddScoped<IRepository, Repository>();
+
+            services.AddCors(
+                (builder) => {
+                    builder.AddDefaultPolicy((policy) => {
+                        policy.WithOrigins("http://localhost:4200/", "https://stream-snipers-frontend.azurewebsites.net/")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+                }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
