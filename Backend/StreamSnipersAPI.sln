@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data-Layer", "Data-Layer\Data-Layer.csproj", "{63EF62E8-26DB-4ADE-8C99-3F6950262464}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business-Layer", "Business-Layer\Business-Layer.csproj", "{D508DD35-06E7-49D7-A27A-DE3B3C888C25}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{B14F5AB2-B426-4CCE-95E8-D92D9EA5C64A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{3D0E925C-ED55-4AF4-8CB8-13E1C0C87842}"
