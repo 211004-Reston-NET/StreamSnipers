@@ -8,8 +8,8 @@ import { LoginComponent } from './Login/login/login.component';
 import { ReviewComponent } from './Review/review/review.component';
 import { SearchComponent } from './Search/search/search.component';
 import { RecommendComponent } from './Recommend/recommend/recommend.component';
-import { HomeComponentModule } from './Home/home/home.module';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
-    HomeComponentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
