@@ -9,6 +9,7 @@ import { ReviewComponent } from './Review/review/review.component';
 import { SearchComponent } from './Search/search/search.component';
 import { RecommendComponent } from './Recommend/recommend/recommend.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
   ],
   providers: [],
