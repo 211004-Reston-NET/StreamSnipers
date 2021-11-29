@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<h1 p > Stream Snipers</h1>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<div>
+    <button class="btn btn-primary text-white" >Home</button>
+    <button class="btn btn-primary text-white" >Favorites</button>
+</div>
+
+<div class="text-sm-left">
+    <p>
+        <select>
+            <option>All</option>
+            <option>Genre</option>
+            <option>Platform</option>
+        </select> 
+        <input type="submit" value="Search" />
+    </p>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <table class="table table-hover">
+            <thead>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of listOfUser">
+                    <td>{{ user.userId }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <button class="btn btn-primary" (click) = "goToFavorite()">Favorites</button>
+                        <app-favorite></app-favorite>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2"></div>
+</div>
