@@ -10,6 +10,8 @@ import { SearchComponent } from './Search/search/search.component';
 import { RecommendComponent } from './Recommend/recommend/recommend.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from '@auth0/auth0-angular';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,17 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     ReviewComponent,
     SearchComponent,
-    RecommendComponent
+    RecommendComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    AuthModule.forRoot({
+      clientId:"ylc2Bk1RtqVm7MLmdYotdddAeRSbrUc5",
+      domain:"dev-3g3556dl.us.auth0.com"
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
