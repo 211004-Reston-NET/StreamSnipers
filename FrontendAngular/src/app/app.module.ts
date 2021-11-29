@@ -8,7 +8,6 @@ import { LoginComponent } from './Login/login/login.component';
 import { ReviewComponent } from './Review/review/review.component';
 import { SearchComponent } from './Search/search/search.component';
 import { RecommendComponent } from './Recommend/recommend/recommend.component';
-import { HomeComponentModule } from './Home/home/home.module';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule,
-    HomeComponentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
