@@ -1,46 +1,48 @@
 <!DOCTYPE html>
-<h1 p > Stream Snipers</h1>
+<br />
+<br />
+<br />
 <head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="home.component.css">
 </head>
-<div>
-    <button class="btn btn-primary text-white" >Home</button>
-    <button class="btn btn-primary text-white" >Favorites</button>
+
+<body>
+<h1>Stream Snipers</h1>
+
+
+<div class="center">
+    <button>Home</button>
+    <button>Favorites</button>
+    <button>Profile</button>
+    <button>LogOut</button>
 </div>
 
 <div class="text-sm-left">
-    <p>
+    <p class = "search">
         <select>
             <option>All</option>
             <option>Genre</option>
             <option>Platform</option>
         </select> 
-        <input type="submit" value="Search" />
+        <input class="bar" type="text" placeholder="Search..." />
+        <button type="submit"><i class="submit">Submit</i></button>
     </p>
 </div>
-<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <table class="table table-hover">
-            <thead>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th></th>
-            </thead>
-            <tbody>
-                <tr *ngFor="let user of listOfUser">
-                    <td>{{ user.userId }}</td>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>
-                        <button class="btn btn-primary" (click) = "goToFavorite()">Favorites</button>
-                        <app-favorite></app-favorite>
-                    </td>
-                    
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col-md-2"></div>
+<br />
+<br />
+<br />
+<div class="cover">
+    <p class ="cen">
+        Welcome to Stream Snipers!
+    </p>
+    <p class ="cen">
+        This platform allows you to find which streaming service has the shows that you want to watch.
+    </p>
+    <p class ="cen">
+        Here you have the ability to search up any show, sort by genre, add a show to your favorites list, and more!
+    </p>
+    <p class ="cen">
+        Some more meaningless text can go here to fill page space! You could even add images!
+    </p>
 </div>
+</body>
