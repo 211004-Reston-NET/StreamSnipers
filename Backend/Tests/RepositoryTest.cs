@@ -64,6 +64,26 @@ namespace Tests
         }
 
         [Fact]
+        public void LoginUserShouldReturnAUserWithAMatchingEmailAndPassword()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                string _email = "user1@admin.com";
+                string _password = "Admin123!";
+
+                var test = repo.LoginUser(_email, _password);
+
+                Assert.NotNull(test);
+                Assert.Equal("Admin1", test.Username);
+                Assert.Equal("Admin's 1st Review", test.Review[0].Text);
+                Assert.Equal("Shrek", test.PreviousSearch[0].Search);
+                Assert.Equal("Action", test.Recommendation[0].Genre);
+                Assert.Equal("testImdbID1", test.FavoriteList[0].ImdbId);
+            }
+        }
+
+        [Fact]
         public void AddUserShouldAddANewUserToUserTable()
         {
             using (var context = new SSDBContext(_options))

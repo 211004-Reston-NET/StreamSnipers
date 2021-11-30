@@ -18,7 +18,6 @@ namespace Data_Layer
         /// <returns>The User found by UserId.</returns>
         User GetUserById(int p_userId);
 
-
         /// <summary>
         /// Adds a User to the DB.
         /// </summary>
@@ -32,6 +31,14 @@ namespace Data_Layer
         /// <param name="p_userIdToDelete">The UserId that will be deleted</param>
         /// <returns>The User that will be deleted</returns>
         User DeleteUserById(int p_userIdToDelete);
+
+        /// <summary>
+        /// Searches the DB for a user by email and password and returns a user it finds.
+        /// </summary>
+        /// <param name="p_email">The email to match with the user.</param>
+        /// <param name="p_password">The Password to match with the user.</param>
+        /// <returns>Returns the User that was found.</returns>
+        User LoginUser(string p_email, string p_password);
 
         /// <summary>
         /// Will return a list of all FavoriteLists

@@ -20,21 +20,21 @@ namespace WebAPI.Controllers
             _repo = p_repo;
         }
 
-        // GET api/<RecommendationController>/5
+        // GET api/recommendation/{id}
         [HttpGet("{id}")]
         public IActionResult GetRecommendationById(int id)
         {
             return Ok(_repo.GetRecommendationById(id));
         }
 
-        // GET api/<RecommendationController>/User/5
+        // GET api/recommendation/user/{id}
         [HttpGet("User/{id}")]
         public IActionResult GetRecommendationByUserId(int id)
         {
             return Ok(_repo.GetRecommendationByUserId(id));
         }
 
-        // POST api/<RecommendationController>
+        // POST api/recommendation/add
         [HttpPost("Add")]
         public IActionResult AddRecommendation([FromBody] Recommendation value)
         {
@@ -47,7 +47,7 @@ namespace WebAPI.Controllers
         //{
         //}
 
-        // DELETE api/<RecommendationController>/5
+        // DELETE api/recommendation/{id}
         [HttpDelete("{id}")]
         public IActionResult DeleteRecommendationById(int id)
         {

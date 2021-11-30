@@ -185,5 +185,15 @@ namespace Data_Layer
             _context.SaveChanges();
             return result;
         }
+
+        public User LoginUser(string p_email, string p_password)
+        {
+            return _context.Users
+                            .Include("FavoriteList")
+                            .Include("PreviousSearch")
+                            .Include("Recommendation")
+                            .Include("Review")
+                            .FirstOrDefault(user => user.Email == p_email && user.Password == p_password);
+        }
     }
 }
