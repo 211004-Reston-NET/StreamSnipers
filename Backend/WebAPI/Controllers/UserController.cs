@@ -20,21 +20,28 @@ namespace WebAPI.Controllers
             _repo = p_repo;
         }
 
-        // GET: api/<UserController>
+        // GET: api/user/all
         [HttpGet("All")]
         public IActionResult GetAllUser()
         {
             return Ok(_repo.GetAllUsers());
         }
 
-        // GET api/<UserController>/5
+        // GET api/user/{id}
         [HttpGet("{p_id}")]
         public IActionResult GetUserById(int p_id)
         {
             return Ok(_repo.GetUserById(p_id));
         }
 
-        // POST api/<UserController>
+        // Get api/user/login/{email}/{password}
+        [HttpGet("{p_email}/{p_password}")]
+        public IActionResult LoginUser(string p_email, string p_password)
+        {
+            return Ok(_repo.LoginUser(p_email, p_password));
+        }
+
+        // POST api/user/add
         [HttpPost("Add")]
         public IActionResult AddUser([FromBody] User value)
         {
@@ -47,7 +54,7 @@ namespace WebAPI.Controllers
         //{
         //}
 
-        // DELETE api/<UserController>/5
+        // DELETE api/user/{id}
         [HttpDelete("{id}")]
         public IActionResult DeleteUserById(int id)
         {
