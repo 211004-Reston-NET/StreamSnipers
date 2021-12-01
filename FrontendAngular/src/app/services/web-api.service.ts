@@ -15,7 +15,7 @@ export class WebAPIService {
   {
     if(p_email)
     {
-      return this.http.get<any>(`${this.endpoint}/user/${p_email}/Colinsucks!`);    
+      return this.http.get<any>(`${this.endpoint}/user/login/${p_email}`);    
     }
     else
     {
