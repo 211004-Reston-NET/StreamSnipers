@@ -11,7 +11,7 @@ export class FavoriteComponent implements OnInit {
 
   listOfUser:FavoriteList[] = [];
 
-  constructor(private ssAPI:TestAPIService) 
+  constructor(private ssAPI:WebAPIService) 
   {
     ssAPI.getAllFavoriteList().subscribe((response) => {
       this.listOfUser = response;
