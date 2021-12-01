@@ -1,1 +1,29 @@
-<p>favorite works!</p>
+<br />
+<h1>Favorites</h1>
+<br />
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="cover">
+        <table class="table table-hover">
+            <thead>
+                <th></th>
+                <th>ID</th>
+                <th>User ID</th>
+                <th>IMDB ID</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let favorite of listOfUser">
+                    <td>
+                        <button class="btn btn-primary" >*</button>
+                    </td>
+                    <td>{{ favorite.favoriteListId}}</td>
+                    <td>{{ favorite.userId }}</td>
+                    <td>{{ favorite.imdbId }}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>

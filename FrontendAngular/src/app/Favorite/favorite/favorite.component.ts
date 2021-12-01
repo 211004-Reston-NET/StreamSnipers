@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { FavoriteList } from '../../models/favoritelist';
+import { TestAPIService } from '../../services/test-api.service';
 
 @Component({
   selector: 'app-favorite',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoriteComponent implements OnInit {
 
-  constructor() { }
+  listOfUser:FavoriteList[] = [];
+
+  constructor(private ssAPI:TestAPIService) 
+  {
+    ssAPI.getAllFavoriteList().subscribe((response) => {
+      this.listOfUser = response;
+    });
+  }
 
   ngOnInit(): void {
   }
