@@ -64,15 +64,14 @@ namespace Tests
         }
 
         [Fact]
-        public void LoginUserShouldReturnAUserWithAMatchingEmailAndPassword()
+        public void LoginUserShouldReturnAUserWithAMatchingEmail()
         {
             using (var context = new SSDBContext(_options))
             {
                 IRepository repo = new Repository(context);
                 string _email = "user1@admin.com";
-                string _password = "Admin123!";
 
-                var test = repo.LoginUser(_email, _password);
+                var test = repo.LoginUser(_email);
 
                 Assert.NotNull(test);
                 Assert.Equal("Admin1", test.Username);

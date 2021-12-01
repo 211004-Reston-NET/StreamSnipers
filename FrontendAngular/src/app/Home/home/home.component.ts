@@ -1,5 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import { ImdbService } from 'src/app/services/imdb.service';
+import { WebAPIService } from 'src/app/services/web-api.service';
 
 @Component({
   selector: 'app-home',
@@ -17,9 +20,36 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(public imdbAPI: ImdbService) { }
+  constructor
+  (
+    public imdbAPI: ImdbService, 
+    public auth0:AuthService, 
+    @Inject(DOCUMENT) public document: Document, 
+    public webAPI: WebAPIService          
+  ) 
+  {
+  }
 
   ngOnInit(): void {
+    this.auth0.user$.subscribe(
+      (profile) => 
+      {
+        if(profile)
+        {
+          console.log(profile);
+        // check if user is in db already
+          this.webAPI.loginUser(profile.email).subscribe(
+            (response) => 
+            {
+              if (!response)
+              {
+                // post new user here using profile.email 
+              }
+            }
+          )
+        }
+      }
+      );
   }
 
   imdbSearch(search: string) {

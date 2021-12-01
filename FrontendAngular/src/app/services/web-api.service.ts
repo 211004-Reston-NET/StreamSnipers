@@ -11,60 +11,68 @@ export class WebAPIService {
   }
 
   ////////////// User //////////////
-  LoginUser(p_email:string, p_password:string)
+  loginUser(p_email:string|undefined)
   {
-    return this.http.get<any>(`${this.endpoint}/user/login/${p_email}/${p_password}`);
+    if(p_email)
+    {
+      return this.http.get<any>(`${this.endpoint}/user/login/${p_email}`);    
+    }
+    else
+    {
+      return this.http.get<any>(`${this.endpoint}/user/login/`); 
+    }
+    
   }
 
-  GetUserById(p_id:number)
+  getUserById(p_id:number)
   {
     return this.http.get<any>(`${this.endpoint}/user/${p_id}`);
   }
 
-  
+
   ////////////// Review //////////////
-  GetReviewById(p_id:number)
+  getReviewById(p_id:number)
   {
     return this.http.get<any>(`${this.endpoint}/review/${p_id}`);
   }
 
-  GetReviewByUserId(p_userId:number)
+  getReviewByUserId(p_userId:number)
   {
     return this.http.get<any>(`${this.endpoint}/review/user/${p_userId}`);
   }
 
 
   ////////////// Recommendation //////////////
-  GetRecommendationById(p_id:number)
+  getRecommendationById(p_id:number)
   {
     return this.http.get<any>(`${this.endpoint}/recommendation/${p_id}`);
   }
 
-  GetRecommendationByUserId(p_userId:number)
+  getRecommendationByUserId(p_userId:number)
   {
     return this.http.get<any>(`${this.endpoint}/recommendation/user/${p_userId}`);
   } 
 
 
   ////////////// Previous Search //////////////
-  GetPreviousSearchById(p_id:number)
+  getPreviousSearchById(p_id:number)
   {
     return this.http.get<any>(`${this.endpoint}/previousSearch/${p_id}`);
   }
 
-  GetPreviousSearchByUserId(p_userId:number)
+  getPreviousSearchByUserId(p_userId:number)
   {
     return this.http.get<any>(`${this.endpoint}/previousSearch/user/${p_userId}`);
   }
 
 
   ////////////// Favorite List //////////////
-  GetFavoriteListById(p_id:number)
+  getFavoriteListById(p_id:number)
   {
     return this.http.get<any>(`${this.endpoint}/favoriteList/${p_id}`);
   }
 
-  GetFavoriteListByUserId(p_userId:number)
+  getFavoriteListByUserId(p_userId:number)
   {
     return this.http.get<any>(`${this.endpoint}/favoriteList/user/${p_userId}`);
   }
