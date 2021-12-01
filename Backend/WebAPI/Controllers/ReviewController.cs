@@ -21,21 +21,21 @@ namespace WebAPI.Controllers
             _repo = p_repo;
         }
 
-        // GET api/<ReviewController>/5
+        // GET api/review/{id}
         [HttpGet("{id}")]
         public IActionResult GetReviewById(int id)
         {
             return Ok(_repo.GetReviewById(id));
         }
 
-        // GET api/<ReviewController>/User/5
+        // GET api/review/user/{id}
         [HttpGet("User/{id}")]
         public IActionResult GetReviewByUserId(int id)
         {
             return Ok(_repo.GetReviewByUserId(id));
         }
 
-        // POST api/<ReviewController>
+        // POST api/review/add
         [HttpPost("Add")]
         public IActionResult CreateReview([FromBody] Review value)
         {
@@ -48,7 +48,7 @@ namespace WebAPI.Controllers
         //{
         //}
 
-        // DELETE api/<ReviewController>/5
+        // DELETE api/review/{id}
         [HttpDelete("{id}")]
         public IActionResult DeleteReviewById(int id)
         {

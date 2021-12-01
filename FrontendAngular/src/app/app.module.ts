@@ -12,6 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from '@auth0/auth0-angular';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { RouterModule } from '@angular/router';
+import { PricingComponent } from './pricing/pricing/pricing.component';
+import { FeaturesComponent } from './features/features/features.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +26,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     ReviewComponent,
     SearchComponent,
     RecommendComponent,
-    NavBarComponent
+    NavBarComponent,
+    PricingComponent,
+    FeaturesComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,13 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     AuthModule.forRoot({
       clientId:"ylc2Bk1RtqVm7MLmdYotdddAeRSbrUc5",
       domain:"dev-3g3556dl.us.auth0.com"
-    })
+    }),
+    RouterModule.forRoot([
+      {path: "search", component:SearchComponent},
+      {path: "pricing", component:PricingComponent},
+      {path: "features", component:FeaturesComponent},
+      {path: "**", component:HomeComponent}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
