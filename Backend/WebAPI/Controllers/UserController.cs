@@ -35,7 +35,7 @@ namespace WebAPI.Controllers
         }
 
         // Get api/user/login/{email}/{password}
-        [HttpGet("{p_email}/{p_password}")]
+        [HttpGet("login/{p_email}/{p_password}")]
         public IActionResult LoginUser(string p_email)
         {
             return Ok(_repo.LoginUser(p_email));
