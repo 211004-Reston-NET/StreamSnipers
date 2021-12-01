@@ -77,4 +77,9 @@ export class WebAPIService {
     return this.http.get<any>(`${this.endpoint}/favoriteList/user/${p_userId}`);
   }
 
+  getAllFavoriteList()
+  {
+    return this.http.get<any>(`${this.endpoint}/favoriteList/all`);
+  }
+
 }
