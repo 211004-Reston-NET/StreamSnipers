@@ -1,1 +1,34 @@
-<p>favorite works!</p>
+<br />
+<h1>Favorites</h1>
+<br />
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="cover">
+        <table class="table table-hover">
+            <thead>
+                <th>ID</th>
+                <th>User ID</th>
+                <th>IMDB ID</th>
+                <th>AmazonVideo</th>
+                <th>Name</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let favorite of listOfUser">
+                   
+                    <td>{{ favorite.favoriteListId}}</td>
+                    <td>{{ favorite.userId }}</td>
+                    <td>{{ favorite.imdbId }}</td>
+                    <td>{{ favorite.hulu }}</td>
+                    <td>{{ favorite.name }}</td>
+                    <td class="right">
+                        <button class="btn btn-primary" >Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>

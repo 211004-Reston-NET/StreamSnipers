@@ -42,6 +42,7 @@ import { FeaturesComponent } from './features/features/features.component';
       {path: "search", component:SearchComponent},
       {path: "pricing", component:PricingComponent},
       {path: "features", component:FeaturesComponent},
+      {path: "favorite", component:FavoriteComponent},
       {path: "**", component:HomeComponent}
     ])
   ],
