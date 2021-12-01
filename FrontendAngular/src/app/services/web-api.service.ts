@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Review } from '../models/review';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,11 @@ export class WebAPIService {
   getReviewByUserId(p_userId:number)
   {
     return this.http.get<any>(`${this.endpoint}/review/user/${p_userId}`);
+  }
+
+  createReview(review:Review)
+  {
+    return this.http.post<Review>(`${this.endpoint}/review/add`, review);
   }
 
 

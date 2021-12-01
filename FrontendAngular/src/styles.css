@@ -9,6 +9,4 @@ body {
 
   }
 
-.navbaright {
-  text-align:right;
-}
+  @import '~bootstrap/dist/css/bootstrap.min.css';
