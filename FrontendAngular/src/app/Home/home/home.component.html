@@ -24,10 +24,11 @@
             <option>Genre</option>
             <option>Platform</option>
         </select> 
-        <input class="bar" type="text" placeholder="Search..." />
-        <button type="submit"><i class="submit">Submit</i></button>
+        <input class="bar" type="text" id="searchtext" name="searchtext" #searchtext placeholder="Search..." />
+        <button type="submit" (click)="imdbSearch(searchtext.value)"><i class="submit">Submit</i></button>
     </p>
 </div>
+<img [src]= "movePosterSrc">
 <br />
 <br />
 <br />
