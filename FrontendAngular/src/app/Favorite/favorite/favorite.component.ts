@@ -16,6 +16,10 @@ export class FavoriteComponent implements OnInit {
     ssAPI.getAllFavoriteList().subscribe((response) => {
       this.listOfUser = response;
     });
+
+    // ssAPI.DeleteFavoriteListById(id).subscribe((response) => {
+    //   this.listOfUser = response;
+    // });
   }
 
   ngOnInit(): void {

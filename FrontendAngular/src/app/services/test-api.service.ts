@@ -18,5 +18,10 @@ export class TestAPIService {
   {
     return this.http.get<FavoriteList[]>(this.endpoint+`favoriteList/all`)
   }
+
+  DeleteFavoriteListById(p_id:number) : Observable<FavoriteList[]>
+  {
+    return this.http.get<FavoriteList[]>(this.endpoint+`favoriteList/${p_id}`)
+  }
 }
 

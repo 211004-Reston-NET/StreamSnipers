@@ -7,19 +7,24 @@
         <div class="cover">
         <table class="table table-hover">
             <thead>
-                <th></th>
                 <th>ID</th>
                 <th>User ID</th>
                 <th>IMDB ID</th>
+                <th>AmazonVideo</th>
+                <th>Name</th>
+                <th></th>
             </thead>
             <tbody>
                 <tr *ngFor="let favorite of listOfUser">
-                    <td>
-                        <button class="btn btn-primary" >*</button>
-                    </td>
+                   
                     <td>{{ favorite.favoriteListId}}</td>
                     <td>{{ favorite.userId }}</td>
                     <td>{{ favorite.imdbId }}</td>
+                    <td>{{ favorite.hulu }}</td>
+                    <td>{{ favorite.name }}</td>
+                    <td class="right">
+                        <button class="btn btn-primary" >Remove</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
