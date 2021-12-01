@@ -186,14 +186,14 @@ namespace Data_Layer
             return result;
         }
 
-        public User LoginUser(string p_email, string p_password)
+        public User LoginUser(string p_email)
         {
             return _context.Users
                             .Include("FavoriteList")
                             .Include("PreviousSearch")
                             .Include("Recommendation")
                             .Include("Review")
-                            .FirstOrDefault(user => user.Email == p_email && user.Password == p_password);
+                            .FirstOrDefault(user => user.Email == p_email);
         }
     }
 }
