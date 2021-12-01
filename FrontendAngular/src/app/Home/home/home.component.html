@@ -10,16 +10,17 @@
 <h1>Stream Snipers</h1>
 <br />
 <div class="text-sm-left">
-        <form class= "search">
+    <form class= "search">
         <select>
             <option>All</option>
             <option>Genre</option>
             <option>Platform</option>
         </select> 
-        <input class="bar" type="text" placeholder="Search..." />
-        <button type="submit" action="/FrontendAngular/src/app/Search/search/search.component.html"><i class="submit">Submit</i></button>
-        </form>
+        <input class="bar" type="text" id="searchtext" name="searchtext" #searchtext placeholder="Search..." />
+        <button type="submit" (click)="imdbSearch(searchtext.value)" action="/FrontendAngular/src/app/Search/search/search.component.html"><i class="submit">Submit</i></button>
+    </form>
 </div>
+<img [src]= "movePosterSrc">
 <br />
 <br />
 <br />
