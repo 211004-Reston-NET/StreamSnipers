@@ -91,7 +91,6 @@ namespace Tests
                 User _user = new User()
                 {
                     Email = "user3@test.com",
-                    Password = "Password3!",
                     Username = "User3",
                     Review = new List<Review>
                     {
@@ -491,7 +490,6 @@ namespace Tests
                     {
                         UserId = 1,
                         Email = "user1@admin.com",
-                        Password = "Admin123!",
                         Username = "Admin1",
                         Admin = true,
                         Review = new List<Review>
@@ -561,7 +559,6 @@ namespace Tests
                     {
                         UserId = 2,
                         Email = "user2@test.com",
-                        Password = "User123!",
                         Username = "User2",
                         Admin = false
                     }
