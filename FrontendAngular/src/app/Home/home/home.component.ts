@@ -13,7 +13,12 @@ export class HomeComponent implements OnInit {
   searchtext: string = '';
   imdbId: string = '';
   movePosterSrc: string = '';
-  @Input()
+  movieTitleSrc: string = '';
+  movieReleaseDateSrc: string = '';
+  movieRuntimeSrc: string = '';
+  movieDescriptionSrc: string = '';
+  movieAwardsSrc: string ='';
+  @Input()                    
   selected: boolean = false;
   @Output() selectedChange = new EventEmitter<boolean>();
 
@@ -61,6 +66,11 @@ export class HomeComponent implements OnInit {
             (res) => {
               // got the movie stuff here.
               this.movePosterSrc = res.image;
+              this.movieTitleSrc = res.title;
+              this.movieReleaseDateSrc = res.releaseDate;
+              this.movieRuntimeSrc = res.runtimeStr;
+              this.movieDescriptionSrc = res.plot;
+              this.movieAwardsSrc = res.awards;
             }
           )
         }
