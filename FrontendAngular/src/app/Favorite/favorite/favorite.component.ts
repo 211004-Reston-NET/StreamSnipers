@@ -1,6 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FavoriteList } from '../../models/favoritelist';
-import { TestAPIService } from '../../services/test-api.service';
+import { WebAPIService } from '../../services/web-api.service';
 
 @Component({
   selector: 'app-favorite',
