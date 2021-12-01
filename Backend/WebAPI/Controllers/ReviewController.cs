@@ -36,10 +36,10 @@ namespace WebAPI.Controllers
         }
 
         // POST api/review/add
-        [HttpPost("Add")]
+        [HttpPost("add")]
         public IActionResult CreateReview([FromBody] Review value)
         {
-            return Created("api/Review/Add", _repo.AddReview(value));
+            return Created("api/Review/add", _repo.AddReview(value));
         }
 
         //// PUT api/<ReviewController>/5
