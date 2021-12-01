@@ -8,7 +8,6 @@ namespace Models
     public class User
     {
         private string _email;
-        private string _password;
         private string _username;
 
         [Key]
@@ -27,20 +26,6 @@ namespace Models
                 }
                 _email = value; 
             }
-        }
-
-        [Required]
-        public string Password 
-        { 
-            get { return _password; }
-            set 
-            { 
-                if (!Regex.IsMatch(value, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$")) 
-                {
-                    throw new Exception("Not a valid password, password must containt at least 1 Uppercase letter, 1 lowercase letter, 1 Special character and 1 number.");
-                }
-                _password = value;
-            } 
         }
 
         [MaxLength(40)]
