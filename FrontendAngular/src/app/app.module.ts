@@ -46,6 +46,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       {path: "pricing", component:PricingComponent},
       {path: "features", component:FeaturesComponent},
       {path: "review", component:ReviewComponent},
+      {path: "favorite", component:FavoriteComponent},
       {path: "**", component:HomeComponent}
     ])
   ],
