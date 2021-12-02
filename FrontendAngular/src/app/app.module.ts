@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 import { PricingComponent } from './pricing/pricing/pricing.component';
 import { FeaturesComponent } from './features/features/features.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ImdbService } from './services/imdb.service';
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       {path: "**", component:HomeComponent}
     ])
   ],
-  providers: [],
+  providers: [ImdbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
