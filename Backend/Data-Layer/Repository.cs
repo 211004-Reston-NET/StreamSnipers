@@ -12,7 +12,7 @@ namespace Data_Layer
         public Repository(SSDBContext p_context)
         {
             _context = p_context;
-           
+            
     }
 
         public List<FavoriteList> GetFavoriteListByUserId(int p_userId)
@@ -384,7 +384,7 @@ namespace Data_Layer
                 _context.SaveChanges();
             }
             return review;
-
+        }
         public User LoginUser(string p_email)
         {
             return _context.Users
@@ -394,6 +394,12 @@ namespace Data_Layer
                             .Include("Review")
                             .FirstOrDefault(user => user.Email == p_email);
 
+        }
+
+        public int GetUserIdByEmail(string p_email)
+        {
+            var result = _context.Users.FirstOrDefault(user => user.Email == p_email);
+            return result.UserId;
         }
     }
 }

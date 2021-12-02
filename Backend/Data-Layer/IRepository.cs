@@ -40,6 +40,13 @@ namespace Data_Layer
         User LoginUser(string p_email);
 
         /// <summary>
+        /// Will return the UserId of the user with the email == p_email.
+        /// </summary>
+        /// <param name="p_email">the email of the user to find.</param>
+        /// <returns>the UserId of the user found.</returns>
+        int GetUserIdByEmail(string p_email);
+
+        /// <summary>
         /// Will return a list of all FavoriteLists
         /// </summary>
         /// <returns>The List of FavoriteLists</returns>

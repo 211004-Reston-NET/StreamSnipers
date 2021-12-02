@@ -41,6 +41,13 @@ namespace WebAPI.Controllers
             return Ok(_repo.LoginUser(p_email));
         }
 
+        // Get api/user/userid/{email}
+        [HttpGet("userid/{p_email}")]
+        public IActionResult GetUserIdByEmail(string p_email)
+        {
+            return Ok(_repo.GetUserIdByEmail(p_email));
+        }
+
         // POST api/user/add
         [HttpPost("Add")]
         public IActionResult AddUser([FromBody] User value)
