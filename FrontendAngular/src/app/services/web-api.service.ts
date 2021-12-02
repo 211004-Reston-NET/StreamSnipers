@@ -25,9 +25,14 @@ export class WebAPIService {
     
   }
 
-  getUserById(p_id:number)
+  getUserById(p_id:number|undefined)
   {
     return this.http.get<any>(`${this.endpoint}/user/${p_id}`);
+  }
+
+  getUserIdByEmail(p_email:string|undefined)
+  {
+    return this.http.get<number>(`${this.endpoint}/user/userid/${p_email}`);
   }
 
 
