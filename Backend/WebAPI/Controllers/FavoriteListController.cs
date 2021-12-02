@@ -60,5 +60,14 @@ namespace WebAPI.Controllers
         {
             return Ok(_repo.DeleteFavoriteListById(id));
         }
+
+
+        //UPDATE api/update-favoritelist-by-id/{id}
+        [HttpPut("update-favoritelist-by-id/{id}")]
+        public IActionResult UpdateFavoriteListById(int id, [FromBody] FavoriteList fList)
+        {
+            var updateFavoriteList = _repo.UpdateFavoriteListById(id, fList);
+            return Ok(updateFavoriteList);
+        }
     }
 }
