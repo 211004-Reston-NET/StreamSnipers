@@ -186,7 +186,21 @@ namespace Tests
                     Assert.Equal("user3@test.com", result.Email);
                     Assert.Equal("User3", result.Username);
                 }
+            }
+        }
 
+        [Fact]
+        public void GetUserIdByEmailShouldReturnTheCorrectUserIdMatchedWithTheEmail()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                string _email = "user1@admin.com";
+                
+                var result = repo.GetUserIdByEmail(_email);
+                
+                Assert.True(result>0);
+                Assert.Equal(1, result);
             }
         }
 
