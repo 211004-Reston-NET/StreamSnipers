@@ -187,6 +187,7 @@ namespace Data_Layer
             return result;
         }
 
+
         public bool UpdateUser(User user)
         {
             var userExist = _context.Users
@@ -383,6 +384,16 @@ namespace Data_Layer
                 _context.SaveChanges();
             }
             return review;
+
+        public User LoginUser(string p_email)
+        {
+            return _context.Users
+                            .Include("FavoriteList")
+                            .Include("PreviousSearch")
+                            .Include("Recommendation")
+                            .Include("Review")
+                            .FirstOrDefault(user => user.Email == p_email);
+
         }
     }
 }

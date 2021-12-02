@@ -64,6 +64,25 @@ namespace Tests
         }
 
         [Fact]
+        public void LoginUserShouldReturnAUserWithAMatchingEmail()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                string _email = "user1@admin.com";
+
+                var test = repo.LoginUser(_email);
+
+                Assert.NotNull(test);
+                Assert.Equal("Admin1", test.Username);
+                Assert.Equal("Admin's 1st Review", test.Review[0].Text);
+                Assert.Equal("Shrek", test.PreviousSearch[0].Search);
+                Assert.Equal("Action", test.Recommendation[0].Genre);
+                Assert.Equal("testImdbID1", test.FavoriteList[0].ImdbId);
+            }
+        }
+
+        [Fact]
         public void AddUserShouldAddANewUserToUserTable()
         {
             using (var context = new SSDBContext(_options))
@@ -72,7 +91,6 @@ namespace Tests
                 User _user = new User()
                 {
                     Email = "user3@test.com",
-                    Password = "Password3!",
                     Username = "User3",
                     Review = new List<Review>
                     {
@@ -572,7 +590,6 @@ namespace Tests
                     {
                         UserId = 1,
                         Email = "user1@admin.com",
-                        Password = "Admin123!",
                         Username = "Admin1",
                         Admin = true,
                         Review = new List<Review>
@@ -642,7 +659,6 @@ namespace Tests
                     {
                         UserId = 2,
                         Email = "user2@test.com",
-                        Password = "User123!",
                         Username = "User2",
                         Admin = false
                     }

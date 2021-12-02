@@ -7,6 +7,8 @@
   }
 
   h1 {
+    border: 3px solid black;
+    background-color: white; 
     text-align: center;
     font-size: 70px;
     margin: auto;
@@ -42,7 +44,34 @@
   
 
   .cover{
+    background-color: white; 
     border: 3px solid black;
     margin: auto;
     width: 50%
+  }
+
+  .testingFont{
+    font-size: 2.17em;
+    font-weight: 400;
+  }
+
+  .testingSmallerFont{
+    background-color: rgb(173, 182, 230);
+    font-size: 1.90em;
+    font-weight: 300;
+  }
+
+  .testingCover{
+    font-size: 2.17em;
+    font-weight: 600;
+    background-color: rgb(173, 182, 230);
+    border: 3px blue;
+    margin: auto;
+    width: 30%;
+  }
+
+  .verySmallFont{
+    background-color: lightgray;
+    font-size:  1.50em;
+    font-weight: 200;
   }

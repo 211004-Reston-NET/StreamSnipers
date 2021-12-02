@@ -8,26 +8,42 @@
 
 <body>
 <h1>Stream Snipers</h1>
-
-
-<div class="center">
-    <button>Home</button>
-    <button>Favorites</button>
-    <button>Profile</button>
-    <button>LogOut</button>
-</div>
-
+<br />
 <div class="text-sm-left">
-        <form class= "search">
+    <form class= "search">
         <select>
             <option>All</option>
             <option>Genre</option>
             <option>Platform</option>
         </select> 
-        <input class="bar" type="text" placeholder="Search..." />
-        <button type="submit" action="/FrontendAngular/src/app/Search/search/search.component.html"><i class="submit">Submit</i></button>
-        </form>
+        <input class="bar" type="text" id="searchtext" name="searchtext" #searchtext placeholder="Search..." />
+        <button type="submit" (click)="imdbSearch(searchtext.value)" action="/FrontendAngular/src/app/Search/search/search.component.html"><i class="submit">Submit</i></button>
+    </form>
 </div>
+<br>
+<div class="container"*ngIf="movieTitleSrc">
+    <div class="row">
+        <div class="col-md-5">
+            <br>
+            <img [src]= "movePosterSrc"> 
+            <br>
+        </div>
+        <br/>
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <div class="card" style="width: 35rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{ movieTitleSrc }}</h5>
+                  <p class="card-text">{{movieDescriptionSrc}}</p>
+                  <p class="card-text">{{movieReleaseDateSrc}}</p>
+                  <p class="card-text">{{movieRuntimeSrc}}</p>
+                  <p class="card-text">{{movieAwardsSrc}}</p>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
 <br />
 <br />
 <br />

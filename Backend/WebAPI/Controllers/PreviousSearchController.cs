@@ -20,21 +20,21 @@ namespace WebAPI.Controllers
             _repo = p_repo;
         }
 
-        // GET api/<PreviousSearchController>/5
+        // GET api/previousSearch/{id}
         [HttpGet("{id}")]
         public IActionResult GetPreviousSearchById(int id)
         {
             return Ok(_repo.GetPreviousSearchById(id));
         }
 
-        // GET api/<PreviousSearchController>/User/5
+        // GET api/previousSearch/User/{id}
         [HttpGet("User/{id}")]
         public IActionResult GetPreviousSearchByUserId(int id)
         {
             return Ok(_repo.GetPreviousSearchByUserId(id));
         }
 
-        // POST api/<PreviousSearchController>
+        // POST api/previousSearch/add
         [HttpPost("Add")]
         public IActionResult AddPreviousSearch([FromBody] PreviousSearch value)
         {
@@ -47,7 +47,7 @@ namespace WebAPI.Controllers
         //{
         //}
 
-        // DELETE api/<PreviousSearchController>/5
+        // DELETE api/previousSearch/{id}
         [HttpDelete("{id}")]
         public IActionResult DeletePreviousSearchById(int id)
         {

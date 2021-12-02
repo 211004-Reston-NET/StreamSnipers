@@ -20,41 +20,41 @@ namespace WebAPI.Controllers
             _repo = p_repo;
         }
 
-        // GET: api/<FavoriteListController>
+        // GET: api/favoriteList/all
         [HttpGet("All")]
         public IActionResult GetAllFavoriteList()
         {
             return Ok(_repo.GetAllFavoriteList());
         }
 
-        // GET api/<FavoriteListController>/5
+        // GET api/favoriteList/{id}
         [HttpGet("{id}")]
         public IActionResult GetFavoriteListById(int id)
         {
             return Ok(_repo.GetFavoriteListById(id));
         }
 
-        // GET api/<FavoriteListController>/User/5
+        // GET api/favoriteList/user/{id}
         [HttpGet("User/{id}")]
         public IActionResult GetFavoriteListByUserId(int id)
         {
             return Ok(_repo.GetFavoriteListByUserId(id));
         }
 
-        // POST api/<FavoriteListController>
+        // POST api/favoriteList/add
         [HttpPost("Add")]
         public IActionResult AddFavoriteList([FromBody] FavoriteList value)
         {
             return Created("api/FavoriteList/Add", _repo.AddFavoriteList(value));
         }
 
-        //// PUT api/<FavoriteListController>/5
+        //// PUT api/favoriteList/{id}
         //[HttpPut("{id}")]
         //public void Put(int id, [FromBody] string value)
         //{
         //}
 
-        // DELETE api/<FavoriteListController>/5
+        // DELETE api/favoriteList/{id}
         [HttpDelete("{id}")]
         public IActionResult DeleteFavoriteListById(int id)
         {

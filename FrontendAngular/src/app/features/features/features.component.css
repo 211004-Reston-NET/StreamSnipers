@@ -1,0 +1,17 @@
+h1 {
+    border: 3px solid black;
+    background-color: white; 
+    text-align: center;
+    font-size: 60px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+
+  .cover{
+    text-align: center;
+    background-color: white; 
+    border: 3px solid black;
+    margin: auto;
+    width: 50%
+  }

@@ -8,3 +8,5 @@ body {
     background-position: top center;
 
   }
+
+  @import '~bootstrap/dist/css/bootstrap.min.css';

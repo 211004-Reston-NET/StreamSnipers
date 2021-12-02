@@ -35,41 +35,6 @@ namespace Tests
             Assert.Throws<Exception>(() => _user.Email = p_input);
         }
 
-        /// <summary>
-        /// Will test that a Password can be set with valid data
-        /// Valid Data = must contain letters, numbers, uppercase, special character
-        /// </summary>
-        [Fact]
-        public void PasswordShouldSetValidData()
-        {
-            //Arrange
-            User _user = new User();
-            string _password = "GoodPassword123!";
-
-            //Act
-            _user.Password = _password;
-
-            //Assert
-            Assert.NotNull(_user.Password);
-            Assert.Equal(_password, _user.Password);
-        }
-
-        /// <summary>
-        /// Password should throw exception if set with incorrect data.
-        /// Password must contain at least lowercase, uppercase, number, and special character.
-        /// </summary>
-        [Theory]
-        [InlineData("password")]
-        [InlineData("123456")]
-        [InlineData("!@#$!!#")]
-        [InlineData("")]
-
-        public void PasswordShouldFailIfSetWithInvalidData(string p_input)
-        {
-            User _user = new User();
-            Assert.Throws<Exception>(() => _user.Password = p_input);
-        }
-
         [Fact]
         public void UsernameShouldSetValidData()
         {
