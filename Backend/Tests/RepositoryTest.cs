@@ -165,6 +165,45 @@ namespace Tests
             }
         }
 
+        [Fact]
+        public void UpdateUserShouldEditUserProperties()
+        {
+
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                User _user = new User()
+                {
+                    UserId = 2,
+                    Email = "user3@test.com",
+                    Username = "User3"
+                };
+                repo.UpdateUser(_user);
+                using (var _context = new SSDBContext(_options))
+                {
+                    User result = repo.GetUserById(2);
+                    Assert.NotNull(result);
+                    Assert.Equal("user3@test.com", result.Email);
+                    Assert.Equal("User3", result.Username);
+                }
+            }
+        }
+
+        [Fact]
+        public void GetUserIdByEmailShouldReturnTheCorrectUserIdMatchedWithTheEmail()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                string _email = "user1@admin.com";
+                
+                var result = repo.GetUserIdByEmail(_email);
+                
+                Assert.True(result>0);
+                Assert.Equal(1, result);
+            }
+        }
+
         //////////////////// FavoriteList ////////////////////
 
         [Fact]
@@ -246,6 +285,30 @@ namespace Tests
                     List<FavoriteList> listOfRemainingFavList = repo.GetFavoriteListByUserId(1);
                     Assert.Null(result);
                     Assert.Single(listOfRemainingFavList);
+                }
+            }
+        }
+
+        [Fact]
+        public void UpdateFavoriteListShouldEditFavoriteListProperties()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                FavoriteList _favoriteToUpdate = new FavoriteList
+                {
+                    UserId = 2,
+                    FavoriteListId = 1,
+                    ImdbId = "2Imbd4Imbd"
+                };
+                repo.UpdateFavoriteList(_favoriteToUpdate);
+                using (var _context = new SSDBContext(_options))
+                {
+                  FavoriteList result = repo.GetFavoriteListById(1);
+
+                  Assert.NotNull(result);
+
+                  Assert.Equal("2Imbd4Imbd", result.ImdbId);
                 }
             }
         }
@@ -378,6 +441,31 @@ namespace Tests
         }
 
         [Fact]
+        public void UpdateRecommendationShouldEditRecommendationProperties()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                Recommendation _recommendationToUpdate = new Recommendation
+                {
+                    UserId = 1,
+                    RecommendationId = 1,
+                    Genre = "SciFi"
+                };
+
+                repo.UpdateRecommendation(_recommendationToUpdate);
+
+                using (var _context = new SSDBContext(_options))
+                {
+                    Recommendation result = repo.GetRecommendationById(1);
+
+                    Assert.NotNull(result);
+                    Assert.Equal("SciFi", result.Genre);
+
+                }
+            }
+        }
+        [Fact]
         public void DeleteRecommendationByIdShouldRemoveRecommendationItFoundById()
         {
             using (var context = new SSDBContext(_options))
@@ -458,6 +546,33 @@ namespace Tests
         }
 
         [Fact]
+        public void UpdateReviewShouldEditReviewProperties()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                Review _reviewToUpdate = new Review
+                {
+                    UserId = 2,
+                    ReviewId = 1,
+                    Text = "Movie Sucked",
+                    Rating = 1
+                };
+
+                repo.UpdateReview(_reviewToUpdate);
+
+                using (var _context = new SSDBContext(_options))
+                {
+                    Review result = repo.GetReviewById(1);
+
+                    Assert.NotNull(result);
+                    Assert.Equal("Movie Sucked", result.Text);
+                    Assert.Equal(1, result.Rating);
+                }
+            }
+        }
+
+        [Fact]
         public void DeleteReviewByIdShouldRemoveReviewItFoundById()
         {
             using (var context = new SSDBContext(_options))
@@ -474,7 +589,6 @@ namespace Tests
                 }
             }
         }
-
 
         ////////////////////////////// Seed Test Database //////////////////////////////
         private void Seed()

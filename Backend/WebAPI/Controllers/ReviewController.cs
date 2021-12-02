@@ -54,5 +54,15 @@ namespace WebAPI.Controllers
         {
             return Ok(_repo.DeleteReviewById(id));
         }
+
+
+        //UPDATE api/update-review-by-id/{id}
+        [HttpPut("update-review-by-id/{id}")]
+        public IActionResult UpdateReviewById(int id, [FromBody]Review rev)
+        {
+            var updateReview = _repo.UpdateReviewById(id, rev);
+            return Ok(updateReview);
+        }
+
     }
 }

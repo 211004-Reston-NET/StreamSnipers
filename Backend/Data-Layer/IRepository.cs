@@ -40,6 +40,13 @@ namespace Data_Layer
         User LoginUser(string p_email);
 
         /// <summary>
+        /// Will return the UserId of the user with the email == p_email.
+        /// </summary>
+        /// <param name="p_email">the email of the user to find.</param>
+        /// <returns>the UserId of the user found.</returns>
+        int GetUserIdByEmail(string p_email);
+
+        /// <summary>
         /// Will return a list of all FavoriteLists
         /// </summary>
         /// <returns>The List of FavoriteLists</returns>
@@ -156,5 +163,92 @@ namespace Data_Layer
         /// <param name="p_reviewId">The Id for the Review to remove</param>
         /// <returns>The Review that was removed.</returns>
         Review DeleteReviewById(int p_reviewId);
+
+        ///<summary>
+        ///Updates the information of a User in the database.
+        ///</summary>
+        ///<param name = "user" > The "user" is the variable used to access the properties in the DB</param>
+        /// <returns>True if the user got updated and false otherwise.</returns>
+        bool UpdateUser(User user);
+
+        ///<summary>
+        ///Updates the information of a User in the database.
+        ///</summary>
+        ///<param name = "name", "user"> The "name" is the variable used to access the user in the DB</param>
+        /// <returns>user object.</returns>
+        User UpdateUserByUsername(string name, User user);
+
+
+        ///<summary>
+        ///Updates the information of a User in the database.
+        ///</summary>
+        ///<param name = "email", "user"> The "email" is the variable used to access the user in the DB</param>
+        /// <returns>user object.</returns>
+        User UpdateUserByEmail(string email, User user);
+
+
+        
+        ///<summary>
+        ///Updates the information of a User in the database.
+        ///</summary>
+        ///<param name = "userId", "user"> The "userId" is the variable used to access the user in the DB</param>
+        /// <returns>user object.</returns>
+        User UpdateUserById(int userId, User user);
+
+        ///<summary>
+        ///Updates the information of the FavoriteList of a user in the database.
+        ///</summary>
+        ///<param name = "fList"> The "fList" is the variable used to access the properties in the DB</param>
+        /// <returns>True if the FavoriteList got updated and false otherwise.</returns>
+        bool UpdateFavoriteList(FavoriteList favoriteList);
+
+        ///<summary>
+        ///Updates the information of the FavoriteList of a user in the database.
+        ///</summary>
+        ///<param name = "fList" and "FavoriteListId"> The "FavoriteListId" is the variable used to access the FavoriteList in the DB</param>
+        /// <returns>FavoriteList object.</returns>
+        FavoriteList UpdateFavoriteListById(int FavoriteListId, FavoriteList fList);
+
+        ///<summary>
+        ///Updates the information of the PreviousSearch of a user in the database.
+        ///</summary>
+        ///<param name = "prevSearch"> The "prevSearch" is the variable used to access the properties in the DB</param>
+        /// <returns>True if the prevSearch got updated and false otherwise.</returns>
+        bool UpdatePreviousSearch(PreviousSearch prevSearch);
+
+        ///<summary>
+        ///Updates the information of the PreviousSearch of a user in the database.
+        ///</summary>
+        ///<param name = "prevSearch" and "PreviousSearchId"> The "prevSearchId" is the variable used to access the PreviousSearchId in the DB</param>
+        /// <returns>Recommendation object.</returns>
+        PreviousSearch UpdatePreviousSearchById(int PreviousSearchId, PreviousSearch prevSearch);
+
+        ///<summary>
+        ///Updates the information of the Recommendation by a user in the database.
+        ///</summary>
+        ///<param name = "rec"> The "rec" is the variable used to access the properties in the DB</param>
+        /// <returns>True if the Recommendation got updated and false otherwise.</returns>
+        bool UpdateRecommendation(Recommendation rec);
+
+        ///<summary>
+        ///Updates the information of the Recommendation by RecommendationId of a user in the database.
+        ///</summary>
+        ///<param name = "RecommendationId" and "rec"> The "RecommendationId" is the variable used to access the Recommendation in the DB</param>
+        /// <returns>Returns Recommendation object.</returns>
+        Recommendation UpdateRecommendationById(int RecommendationId, Recommendation rec);
+
+        ///<summary>
+        ///Updates the information of the Review of a user in the database.
+        ///</summary>
+        ///<param name = "rev"> The "rev" is the variable used to access the properties in the DB</param>
+        /// <returns>True if the Review got updated and false otherwise.</returns>
+        bool UpdateReview(Review rev);
+
+        ///<summary>
+        ///Updates the information of the Review of a user in the database.
+        ///</summary>
+        ///<param name = "ReviewId" and "rev"> The "ReviewId" is the variable used to access the propertiies in the DB</param>
+        ////// <returns>Review object.</returns>
+        Review UpdateReviewById(int ReviewId, Review rev);
     }
 }

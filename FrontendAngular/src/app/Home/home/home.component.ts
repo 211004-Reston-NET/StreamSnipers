@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { ImdbService } from 'src/app/services/imdb.service';
 import { WebAPIService } from 'src/app/services/web-api.service';
@@ -30,7 +31,8 @@ export class HomeComponent implements OnInit {
     public imdbAPI: ImdbService, 
     public auth0:AuthService, 
     @Inject(DOCUMENT) public document: Document, 
-    public webAPI: WebAPIService          
+    public webAPI: WebAPIService, 
+    private router: Router
   ) 
   {
   }
@@ -71,10 +73,16 @@ export class HomeComponent implements OnInit {
               this.movieRuntimeSrc = res.runtimeStr;
               this.movieDescriptionSrc = res.plot;
               this.movieAwardsSrc = res.awards;
+              this.imdbAPI.movieTitle = res.title;
             }
           )
         }
       })
+  }
+
+  goToReview() 
+  {
+    this.router.navigateByUrl("/review");
   }
 
   public toggleSelected() {

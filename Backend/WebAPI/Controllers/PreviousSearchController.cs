@@ -53,5 +53,14 @@ namespace WebAPI.Controllers
         {
             return Ok(_repo.DeletePreviousSearchById(id));
         }
+
+
+        //UPDATE api/update-prevsearch-by-id/{id}
+        [HttpPut("update-prevsearch-by-id/{id}")]
+        public IActionResult UpdatePreviousSearchById(int id, [FromBody] PreviousSearch prevSearch)
+        {
+            var updatePreviousSearch = _repo.UpdatePreviousSearchById(id, prevSearch);
+            return Ok(updatePreviousSearch);
+        }
     }
 }
