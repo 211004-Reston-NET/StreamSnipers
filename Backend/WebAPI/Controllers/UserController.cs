@@ -60,5 +60,32 @@ namespace WebAPI.Controllers
         {
             return Ok(_repo.DeleteUserById(id));
         }
+
+
+        //UPDATE api/update-user-by-id/{id}
+        [HttpPut("update-user-by-id/{id}")]
+        public IActionResult UpdateUserById(int id, [FromBody] User user)
+        {
+            var updateUser = _repo.UpdateUserById(id, user);
+            return Ok(updateUser);
+        }
+
+
+        //UPDATE api/update-user-by-username/{username}
+        [HttpPut("update-user-by-username/{username}")]
+        public IActionResult UpdateUserByUsername(string username, [FromBody] User user)
+        {
+            var updateUser = _repo.UpdateUserByUsername(username, user);
+            return Ok(updateUser);
+        }
+
+
+        //UPDATE api/update-user-by-email/{email}
+        [HttpPut("update-user-by-email/{email}")]
+        public IActionResult UpdateUserByEmail(string email, [FromBody] User user)
+        {
+            var updateUser = _repo.UpdateUserByEmail(email, user);
+            return Ok(updateUser);
+        }
     }
 }

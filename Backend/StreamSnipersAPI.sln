@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{E533E7A2-3B66-4DE8-91B3-CA449C30CCE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{E533E7A2-3B66-4DE8-91B3-CA449C30CCE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data-Layer", "Data-Layer\Data-Layer.csproj", "{63EF62E8-26DB-4ADE-8C99-3F6950262464}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data-Layer", "Data-Layer\Data-Layer.csproj", "{63EF62E8-26DB-4ADE-8C99-3F6950262464}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{B14F5AB2-B426-4CCE-95E8-D92D9EA5C64A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{B14F5AB2-B426-4CCE-95E8-D92D9EA5C64A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{3D0E925C-ED55-4AF4-8CB8-13E1C0C87842}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{3D0E925C-ED55-4AF4-8CB8-13E1C0C87842}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,18 +45,6 @@ Global
 		{63EF62E8-26DB-4ADE-8C99-3F6950262464}.Release|x64.Build.0 = Release|Any CPU
 		{63EF62E8-26DB-4ADE-8C99-3F6950262464}.Release|x86.ActiveCfg = Release|Any CPU
 		{63EF62E8-26DB-4ADE-8C99-3F6950262464}.Release|x86.Build.0 = Release|Any CPU
-		{D508DD35-06E7-49D7-A27A-DE3B3C888C25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D508DD35-06E7-49D7-A27A-DE3B3C888C25}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D508DD35-06E7-49D7-A27A-DE3B3C888C25}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{D508DD35-06E7-49D7-A27A-DE3B3C888C25}.Debug|x64.Build.0 = Debug|Any CPU
-		{D508DD35-06E7-49D7-A27A-DE3B3C888C25}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D508DD35-06E7-49D7-A27A-DE3B3C888C25}.Debug|x86.Build.0 = Debug|Any CPU
-		{D508DD35-06E7-49D7-A27A-DE3B3C888C25}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D508DD35-06E7-49D7-A27A-DE3B3C888C25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D508DD35-06E7-49D7-A27A-DE3B3C888C25}.Release|x64.ActiveCfg = Release|Any CPU
-		{D508DD35-06E7-49D7-A27A-DE3B3C888C25}.Release|x64.Build.0 = Release|Any CPU
-		{D508DD35-06E7-49D7-A27A-DE3B3C888C25}.Release|x86.ActiveCfg = Release|Any CPU
-		{D508DD35-06E7-49D7-A27A-DE3B3C888C25}.Release|x86.Build.0 = Release|Any CPU
 		{B14F5AB2-B426-4CCE-95E8-D92D9EA5C64A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B14F5AB2-B426-4CCE-95E8-D92D9EA5C64A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B14F5AB2-B426-4CCE-95E8-D92D9EA5C64A}.Debug|x64.ActiveCfg = Debug|Any CPU
