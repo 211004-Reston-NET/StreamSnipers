@@ -75,3 +75,22 @@
     font-size:  1.50em;
     font-weight: 200;
   }
+
+  .boxCenter{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    resize: both;
+    overflow: auto;
+  }
+
+  .center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+ .img-fluid {
+   max-width: 100%;
+   height:auto;
+ }

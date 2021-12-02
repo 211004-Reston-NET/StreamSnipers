@@ -23,16 +23,13 @@
 <br>
 <div class="container"*ngIf="movieTitleSrc">
     <div class="row">
-        <div class="col-md-5">
-            <br>
-            <img [src]= "movePosterSrc"> 
-            <br>
+        <div class="col-md-6"> <!--can add padding in quotes here-->
+            <img class="center-block img-fluid" style="width: 450px; height: 500px;"[src]= "movePosterSrc"> 
         </div>
         <br/>
-        <div class="col-md-1"></div>
         <div class="col-md-6">
-            <div class="card" style="width: 35rem;">
-                <div class="card-body">
+            <div class="card center-block img-fluid" style="width: 30rem;">
+                <div class="card-body img-fluid" style="width: 500px; height: 500px;">
                   <h5 class="card-title">{{ movieTitleSrc }}</h5>
                   <p class="card-text">{{movieDescriptionSrc}}</p>
                   <p class="card-text">{{movieReleaseDateSrc}}</p>
