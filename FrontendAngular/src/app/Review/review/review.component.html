@@ -1,26 +1,25 @@
-<br />
-<div class="container">
+<!-- <div class="container ">
   <div class="row">
     <div class="col-md-2"></div>
-    <div class="col-md-8">
-      <div class="card">
-        <h5 class="card-header">{{movieTitle}}</h5>
+    <div class="col-md-8"> -->
+      <div class="card border-info mb-3 center " style="width: 50%;">
+        <h1 class="card-header">{{movieTitle}}</h1>
         <form class="card-body" [formGroup]="reviewGroup">
           <h5 class="card-title">Write A Review</h5>
-          <div class="input-group" >
-            <span class="input-group-text"></span>
+          <div class="input-group">
             <textarea class="form-control" aria-label="With textarea" formControlName="text"></textarea>
           </div>
             <br />
           <h5 class="card-title">Give a Rating</h5>
           <ngb-rating style="font-size: 2rem" [(rate)]="currentRate" [max]="5"></ngb-rating>
             <hr>
-          <pre>Rate: <b>{{currentRate}}</b></pre>
-            <br />
-            <br />
-          <button (click)="createReview(reviewGroup)" class="btn btn-primary">Submit</button>
+          <p>Rate:  <b> {{currentRate}}</b></p>
+          <div class="btn-center">
+            <button (click)="createReview(reviewGroup)" class="btn btn-secondary wide">Submit</button>
+          </div>
+            
         </form>
       </div>
-    </div>
+    <!-- </div>
   </div>
-</div>
+</div> --> 

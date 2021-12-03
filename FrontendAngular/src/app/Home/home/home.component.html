@@ -8,55 +8,60 @@
 </head>
 
 <body>
-<h1>Stream Snipers</h1>
-<br />
-<div class="text-sm-left">
-    <form class= "search">
-        <select>
-            <option>All</option>
-            <option>Genre</option>
-            <option>Platform</option>
-        </select> 
-        <input class="bar" type="text" id="searchtext" name="searchtext" #searchtext placeholder="Search..." />
-        <button type="submit" (click)="imdbSearch(searchtext.value)" action="/FrontendAngular/src/app/Search/search/search.component.html"><i class="submit">Submit</i></button>
-    </form>
-</div>
-<div class="container"*ngIf="movieTitleSrc">
-    <div class="row">
-        <div class="col-md-6"> <!--can add padding in quotes here-->
-            <img class="center-block img-fluid" style="width: 450px; height: 500px;"[src]= "movePosterSrc"> 
-        </div>
-        <br/>
-        <div class="col-md-6">
-            <div class="card center-block img-fluid" style="width: 30rem;">
-                <div class="card-body img-fluid" style="width: 500px; height: 500px;">
-                  <h5 class="card-title">{{ movieTitleSrc }}</h5>
-                  <p class="card-text">{{movieDescriptionSrc}}</p>
-                  <p class="card-text">{{movieReleaseDateSrc}}</p>
-                  <p class="card-text">{{movieRuntimeSrc}}</p>
-                  <p class="card-text">{{movieAwardsSrc}}</p>
-                  <button class="btn btn-primary" (click)="goToReview()">Write a Review</button>
+    <h1>Stream Snipers</h1>
+    <br />
+    <div class="text-sm-left">
+        <form class="search d-flex">
+            <select class="form-select form-select-custom">
+                <option>All</option>
+                <option>Genre</option>
+                <option>Platform</option>
+            </select>
+            <input class="form-control" type="text" id="searchtext" name="searchtext" #searchtext placeholder="Search..." />
+            <button class="btn btn-secondary" type="submit" (click)="imdbSearch(searchtext.value)"
+                action="/FrontendAngular/src/app/Search/search/search.component.html"><i
+                    class="submit">Submit</i></button>
+        </form>
+    </div>
+    <br />
+    <div class="container" *ngIf="movieTitleSrc">
+        <div class="row">
+            <div class="col-md-6">
+                <!--can add padding in quotes here-->
+                <img class="center-block img-fluid  card border-primary posterBorder" style="width: 85%" [src]="movePosterSrc">
+            </div>
+            <br />
+            <div class="col-md-6 ">
+                <div class="card border-success mb-3 posterBorder" style="width: 85%;" >
+                    <div class="card text-white bg-primary  center-block" style="width: 100%; height: 100%;">
+                        <div class="card-body" style="width: 100%;">
+                            <h2 class="card-title cen">{{ movieTitleSrc }}</h2>
+                            <div class="card-body">
+                                <p class="card-text">{{movieDescriptionSrc}}</p>
+                                <p class="card-text">{{movieReleaseDateSrc}}</p>
+                                <p class="card-text">{{movieRuntimeSrc}}</p>
+                                <p class="card-text">{{movieAwardsSrc}}</p>
+                                <button class="btn btn-secondary" (click)="goToReview()">Write a Review</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
             </div>
         </div>
     </div>
-</div>
     <br />
     <br />
     <br />
-    <div class="cover">
-        <p class="cen">
-            Welcome to Stream Snipers!
-        </p>
-        <p class="cen">
-            This platform allows you to find which streaming service has the shows that you want to watch.
-        </p>
-        <p class="cen">
-            Here you have the ability to search up any show, sort by genre, add a show to your favorites list, and more!
-        </p>
-        <p class="cen">
-            Some more meaningless text can go here to fill page space! You could even add images!
-        </p>
+    <div class="card border-secondary mb-3 cen" style="max-width: 40rem;">
+        <div class="card-body">
+            <h4 class="card-title">Welcome to Stream Snipers!</h4>
+            <p class="card-text">This platform allows you to find which streaming service has the shows that you want to watch.</p>
+            <p class="card-text">Here you have the ability to search up any show, sort by genre, add a show to your favorites list, and more!</p>
+            <p class="card-text">Some more meaningless text can go here to fill page space! You could even add images!</p>
+        </div>
     </div>
+    <br />
+    <br />
     <br />
 </body>

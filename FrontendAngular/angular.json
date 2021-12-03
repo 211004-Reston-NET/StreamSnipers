@@ -27,7 +27,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "bootswatch/dist/vapor/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -94,9 +95,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "bootswatch/dist/vapor/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           }
         }
       }
