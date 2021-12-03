@@ -98,5 +98,34 @@ h1 {
 }
 
 .posterBorder{
-  padding: 0;
+  padding: 5;
+  height:auto;
+}
+
+.movielist{
+  text-align: center;
+}
+
+.specmovies{
+  width:  270px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.crop {
+  height: 300px;
+  width: 240px;
+  overflow: hidden;
+ }
+
+ .padder {
+   padding: 40px;
+ }
+ .crop img {
+  height: auto;
+  width: 400px;
+ }
+
+.tester{
+  display: inline-block;
 }
