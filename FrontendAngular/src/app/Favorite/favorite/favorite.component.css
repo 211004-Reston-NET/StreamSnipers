@@ -15,3 +15,8 @@ h1 {
   .right{
     text-align:right;
   }
+
+.noBorder
+{
+  border: 0px;
+}

@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { FavoriteList } from 'src/app/models/favoritelist';
 import { ImdbService } from 'src/app/services/imdb.service';
 import { WebAPIService } from 'src/app/services/web-api.service';
 
@@ -19,6 +20,17 @@ export class HomeComponent implements OnInit {
   movieRuntimeSrc: string = '';
   movieDescriptionSrc: string = '';
   movieAwardsSrc: string ='';
+  favorite: FavoriteList = {
+    favoriteListId: 0,
+    userId: 0,
+    imdbId: '',
+    name: '',
+    netflix: false,
+    hulu: false,
+    amazonVideo: false,
+    hboMax: false,
+    disneyPlus: false
+  };
   @Input()                    
   selected: boolean = false;
   @Output() selectedChange = new EventEmitter<boolean>();
@@ -35,6 +47,8 @@ export class HomeComponent implements OnInit {
     private router: Router
   ) 
   {
+    this.favorite.userId = this.webAPI.getId();
+    this.searchtext = this.imdbAPI.movieTitle;
   }
 
   ngOnInit(): void {
@@ -43,7 +57,6 @@ export class HomeComponent implements OnInit {
       {
         if(profile)
         {
-          console.log(profile);
         // check if user is in db already
           this.webAPI.loginUser(profile.email).subscribe(
             (response) => 
@@ -52,11 +65,20 @@ export class HomeComponent implements OnInit {
               {
                 // post new user here using profile.email 
               }
+              else 
+              {
+                this.favorite.userId = response.userId;
+              }
             }
           )
         }
       }
       );
+    // runs the movie search if approaching from clicked favorite
+    if (this.searchtext)
+    {
+      this.imdbSearch(this.searchtext);
+    }
   }
 
   imdbSearch(search: string) {
@@ -74,10 +96,22 @@ export class HomeComponent implements OnInit {
               this.movieDescriptionSrc = res.plot;
               this.movieAwardsSrc = res.awards;
               this.imdbAPI.movieTitle = res.title;
+                // changing favorite in case they click add to favorite
+              this.favorite.name = this.movieTitleSrc;
+              this.favorite.imdbId = this.imdbId;
             }
           )
         }
       })
+  }
+
+  addToFavorites()
+  {
+    console.log(this.favorite);
+    this.webAPI.createFavorite(this.favorite).subscribe(
+      (response) => {
+        console.log(response);
+      });
   }
 
   goToReview() 

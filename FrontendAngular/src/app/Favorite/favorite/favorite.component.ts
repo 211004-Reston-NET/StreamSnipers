@@ -1,4 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FavoriteList } from '../../models/favoritelist';
 import { WebAPIService } from '../../services/web-api.service';
 
@@ -9,20 +11,21 @@ import { WebAPIService } from '../../services/web-api.service';
 })
 export class FavoriteComponent implements OnInit {
 
-  listOfUser:FavoriteList[] = [];
-
-  constructor(private ssAPI:WebAPIService) 
+  listOfFavorites:FavoriteList[] = [];
+  user = {email:''};
+  constructor(private webAPI: WebAPIService, private router: Router)
   {
-    ssAPI.getAllFavoriteList().subscribe((response) => {
-      this.listOfUser = response;
-    });
 
-    // ssAPI.DeleteFavoriteListById(id).subscribe((response) => {
-    //   this.listOfUser = response;
-    // });
   }
 
   ngOnInit(): void {
+    this.webAPI.getFavoriteListByUserId().then((response) => {
+      console.log(response);
+
+      this.listOfFavorites = this.listOfFavorites.concat(response);
+      console.log(this.listOfFavorites);
+    })
   }
 
+  
 }
