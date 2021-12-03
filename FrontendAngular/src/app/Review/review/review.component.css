@@ -1,0 +1,16 @@
+.center {
+    margin: auto;
+    margin-top: 10%;
+}
+
+.wide {
+    
+    padding-left: 20%;
+    padding-right: 20%;
+    
+}
+.btn-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
