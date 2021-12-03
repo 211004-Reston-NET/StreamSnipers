@@ -17,6 +17,7 @@ import { PricingComponent } from './pricing/pricing/pricing.component';
 import { FeaturesComponent } from './features/features/features.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImdbService } from './services/imdb.service';
+import { FavoriteItemComponent } from './favorite-item/favorite-item.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ImdbService } from './services/imdb.service';
     RecommendComponent,
     NavBarComponent,
     PricingComponent,
-    FeaturesComponent
+    FeaturesComponent,
+    FavoriteItemComponent
   ],
   imports: [
     NgbModule,

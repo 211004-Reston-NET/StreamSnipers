@@ -26,7 +26,7 @@ namespace WebAPI.Controllers
         [HttpGet("All")]
         public IActionResult GetAllFavoriteList()
         {
-             Log.Logger = new LoggerConfiguration()
+            Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .WriteTo.File(new JsonFormatter(),"Logs/allfavoritelistlog.json")
                 .CreateLogger();
@@ -76,7 +76,7 @@ namespace WebAPI.Controllers
         [HttpGet("User/{id}")]
         public IActionResult GetFavoriteListByUserId(int id)
         {
-             Log.Logger = new LoggerConfiguration()
+            Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .WriteTo.File(new JsonFormatter(),"Logs/favoritelistbyuseridlog.json")
                 .CreateLogger();
@@ -155,7 +155,7 @@ namespace WebAPI.Controllers
         [HttpPut("update-favoritelist-by-id/{id}")]
         public IActionResult UpdateFavoriteListById(int id, [FromBody] FavoriteList fList)
         {
-             Log.Logger = new LoggerConfiguration()
+            Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .WriteTo.File(new JsonFormatter(),"Logs/updatefavoritelistlog.json")
                 .CreateLogger();
