@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import { Review } from '../models/review';
 
 @Injectable({
@@ -7,8 +8,22 @@ import { Review } from '../models/review';
 })
 export class WebAPIService {
   private endpoint:string = 'https://stream-snipers-backend.azurewebsites.net/api';
-  constructor(private http:HttpClient) 
+  constructor(private http:HttpClient, private auth0:AuthService) 
   {
+  }
+
+  //// Call this function to get the userId of the user logged in. ////
+  getId() : number
+  {
+    let id:number = 0;
+    this.auth0.user$.subscribe((user) => {
+      if (user) {
+        this.getUserIdByEmail(user.email).subscribe((userId) => {
+          id = userId;
+        });
+      }
+    });
+    return id;
   }
 
   ////////////// User //////////////
