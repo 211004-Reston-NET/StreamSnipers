@@ -25,13 +25,7 @@ export class ReviewComponent implements OnInit {
 
   ngOnInit(): void {
     // This is how we find the userId of who is logged in.
-    this.auth0.user$.subscribe((user) => {
-      if (user) {
-        this.webAPI.getUserIdByEmail(user.email).subscribe((userId) => {
-          this.userId = userId;
-        });
-      }
-    });
+    this.userId = this.webAPI.getId();
   }
 
   createReview(revGroup:FormGroup)
