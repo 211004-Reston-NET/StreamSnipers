@@ -1,7 +1,7 @@
 <div> 
-    <h5 class="center title">{{movieTitle}}</h5>
-    <img (click) = "goToHome()" class="center-block img-fluid  card border-primary center posterBorder" style="width: 70%;" [src]="moviePoster">
-    <button class="btn btn-primary center" (click)="deleteFavorite(favoriteListId)">Remove</button>
+    <h5 [class] = "textColor" class="center title">{{movieTitle}}</h5>
+    <img (click) = "goToHome()" [class] = "color" class="center-block img-fluid  card center posterBorder" style="width: 70%;" [src]="moviePoster">
+    <button [class]="btnColor" class="btn center" (click)="deleteFavorite(favoriteListId)">Remove</button>
     <br />
     <br />
     <br />
