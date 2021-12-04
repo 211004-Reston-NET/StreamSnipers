@@ -14,7 +14,7 @@
 .title
 {
     height: 10px;
-    overflow: visible;
+    /* overflow: visible; */
     margin-bottom: 15%;
 }
 .center 
@@ -31,4 +31,5 @@
     text-align: center;
     margin-left: 35%;
     margin-right: 35%;
+    margin-top: 3%;
 }
