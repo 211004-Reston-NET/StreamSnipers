@@ -9,23 +9,20 @@ import { WebAPIService } from '../services/web-api.service';
   styleUrls: ['./list-review.component.css']
 })
 export class ListReviewComponent implements OnInit {
-  listOfReview:Review[] = [];
-  readonly:boolean = true;
-  movieId: string = this.imdbAPI.movieId;
+  listOfReview: Review[] = [];
   movieTitle:string = this.imdbAPI.movieTitle;
+  movieId: string = this.imdbAPI.movieId;
+  
   constructor(private imdbAPI: ImdbService, private webAPI: WebAPIService)
   {
     this.webAPI.getAllReviewByImdbId(this.movieId).subscribe(
-      (response) => 
-      {
+      (response) => {
         this.listOfReview = this.listOfReview.concat(response);
         console.log(this.listOfReview);
       });
   }
-  
 
-
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
   }
-
 }

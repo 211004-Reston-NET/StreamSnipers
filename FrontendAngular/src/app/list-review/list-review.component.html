@@ -3,16 +3,8 @@
 <br />
 <div class="container">
     <div class="card-deck justify-content-center">
-        <div *ngFor="let review of listOfReview">
-            <div class="card text-white bg-primary" style="max-width: 18rem;">
-                <div class="card-header">{{review.username}}</div>
-                <div class="card-body">
-                    <ngb-rating style="font-size: 2rem" [readonly]="readonly" [(rate)]="review.rating"  [max]="5"></ngb-rating>
-                    <p class="card-text">
-                        {{review.text}}
-                    </p>
-                </div>
-            </div>
+        <div *ngFor="let review of listOfReview;">
+            <app-list-review-item [text]="review.text" [rating]="review.rating" [username]="review.username"></app-list-review-item>
         </div>
     </div>
 </div>

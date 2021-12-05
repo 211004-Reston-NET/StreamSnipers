@@ -1,0 +1,9 @@
+<div [class]="color" class="card text-white" style="max-width: 18rem;">
+    <div class="card-header">{{username}}</div>
+    <div class="card-body">
+        <ngb-rating style="font-size: 2rem" [readonly]="true" [rate]="rating" [max]="5"></ngb-rating>
+        <p class="card-text">
+            {{text}}
+        </p>
+    </div>
+</div>
