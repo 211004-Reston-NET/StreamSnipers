@@ -18,6 +18,7 @@ import { FeaturesComponent } from './features/features/features.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImdbService } from './services/imdb.service';
 import { FavoriteItemComponent } from './favorite-item/favorite-item.component';
+import { ListReviewComponent } from './list-review/list-review.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { FavoriteItemComponent } from './favorite-item/favorite-item.component';
     NavBarComponent,
     PricingComponent,
     FeaturesComponent,
-    FavoriteItemComponent
+    FavoriteItemComponent,
+    ListReviewComponent
   ],
   imports: [
     NgbModule,
@@ -50,6 +52,7 @@ import { FavoriteItemComponent } from './favorite-item/favorite-item.component';
       {path: "features", component:FeaturesComponent},
       {path: "review", component:ReviewComponent},
       {path: "favorite", component:FavoriteComponent},
+      {path: "reviewlist", component:ListReviewComponent},
       {path: "**", component:HomeComponent}
     ])
   ],

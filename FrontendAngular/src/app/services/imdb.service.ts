@@ -6,9 +6,10 @@ import { ImdbIdSearch } from '../models/imdb-id-search';
   providedIn: 'root'
 })
 export class ImdbService {
-
+  
   constructor(private http:HttpClient) { }
-  public movieTitle:string = '';
+  public movieTitle: string = '';
+  public movieId: string = '';
   private endpoint:string = 'https://imdb-api.com/api';
   private key:string = 'k_shxfmft9';
   // search parameter: should be the string from the search bar form at the top of the page.

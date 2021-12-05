@@ -1,7 +1,7 @@
 export interface FavoriteList
 {
     favoriteListId:number;
-    userId: number;
+    userId?: number;
     imdbId: string;
     name: string;
     netflix: boolean;
