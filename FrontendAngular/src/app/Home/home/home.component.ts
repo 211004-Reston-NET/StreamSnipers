@@ -52,8 +52,8 @@ export class HomeComponent implements OnInit {
       public webAPI: WebAPIService,
       private router: Router
     ) {
-    let user = this.webAPI.getId();
-    this.newFavorite.userId = user.UserId;
+    let user = this.webAPI.getId()
+    this.newFavorite.userId = user.userId;
     this.searchtext = this.imdbAPI.movieTitle;
     this.auth0.user$.subscribe(
       (profile) => {

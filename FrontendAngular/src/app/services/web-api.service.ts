@@ -20,10 +20,10 @@ export class WebAPIService {
   getId()
   {
     let user:UserModel = {
-      UserId: 0,
-      Email: '',
-      Username: '',
-      Admin: false
+      userId: 0,
+      email: '',
+      username: '',
+      admin: false
     };
     this.auth0.user$.subscribe((user) => {
       if (user) {
@@ -121,10 +121,10 @@ export class WebAPIService {
     let user: User | null | undefined;
     user = await firstValueFrom(this.auth0.user$);
 
-    let userId: number;
-    userId = await firstValueFrom(this.http.get<number>(`${endpoint}/user/userid/${user?.email}`));
-
-    let favoriteList: FavoriteList = await firstValueFrom(this.http.get<FavoriteList>(`${endpoint}/favoriteList/user/${userId}`));
+    let userFound: UserModel;
+    userFound = await (await firstValueFrom(this.http.get<UserModel>(`${endpoint}/user/userid/${user?.email}`)));
+    
+    let favoriteList: FavoriteList = await firstValueFrom(this.http.get<FavoriteList>(`${endpoint}/favoriteList/user/${userFound.userId}`));
     return favoriteList;
   }
 
