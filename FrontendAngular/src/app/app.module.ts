@@ -19,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImdbService } from './services/imdb.service';
 import { FavoriteItemComponent } from './favorite-item/favorite-item.component';
 import { ListReviewComponent } from './list-review/list-review.component';
+import { ListReviewItemComponent } from './list-review-item/list-review-item.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ListReviewComponent } from './list-review/list-review.component';
     PricingComponent,
     FeaturesComponent,
     FavoriteItemComponent,
-    ListReviewComponent
+    ListReviewComponent,
+    ListReviewItemComponent
   ],
   imports: [
     NgbModule,
