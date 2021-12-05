@@ -5,6 +5,7 @@ import { firstValueFrom, Observable } from 'rxjs';
 import { FavoriteList } from '../models/favoritelist';
 import { Review } from '../models/review';
 import { User } from '@auth0/auth0-spa-js';
+import { UserModel } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -18,16 +19,21 @@ export class WebAPIService {
   //// Call this function to get the userId of the user logged in. ////
   getId()
   {
-    let id:number = 0;
+    let user:UserModel = {
+      UserId: 0,
+      Email: '',
+      Username: '',
+      Admin: false
+    };
     this.auth0.user$.subscribe((user) => {
       if (user) {
-        this.getUserIdByEmail(user.email).subscribe((userId) => {
-          id = userId;
-          return id;
+        this.getUserByEmail(user.email).subscribe((userFound) => {
+          user = userFound;
+          return user;
         });
       }
     });
-    return id;
+    return user;
   }
 
   ////////////// User //////////////
@@ -49,14 +55,19 @@ export class WebAPIService {
     return this.http.get<any>(`${this.endpoint}/user/${p_id}`);
   }
 
-  getUserIdByEmail(p_email:string|undefined|null)
+  getUserByEmail(p_email:string|undefined|null)
   {
-    return this.http.get<number>(`${this.endpoint}/user/userid/${p_email}`);
+    return this.http.get<User>(`${this.endpoint}/user/userid/${p_email}`);
   }
 
 
 
   ////////////// Review //////////////
+  getAllReviewByImdbId(p_imdbId:string|undefined)
+  {
+    return this.http.get<Review>(`${this.endpoint}/review/imdb/${p_imdbId}`);
+  }
+
   getReviewById(p_id:number)
   {
     return this.http.get<any>(`${this.endpoint}/review/${p_id}`);

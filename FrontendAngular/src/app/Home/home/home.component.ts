@@ -52,7 +52,8 @@ export class HomeComponent implements OnInit {
       public webAPI: WebAPIService,
       private router: Router
     ) {
-    this.newFavorite.userId = this.webAPI.getId();
+    let user = this.webAPI.getId();
+    this.newFavorite.userId = user.UserId;
     this.searchtext = this.imdbAPI.movieTitle;
     this.auth0.user$.subscribe(
       (profile) => {
@@ -106,7 +107,11 @@ export class HomeComponent implements OnInit {
               this.movieRuntimeSrc = res.runtimeStr;
               this.movieDescriptionSrc = res.plot;
               this.movieAwardsSrc = res.awards;
+
+              //save title and id to be used in other components
               this.imdbAPI.movieTitle = res.title;
+              this.imdbAPI.movieId = this.imdbId;
+
               // changing favorite in case they click add to favorite
               this.newFavorite.name = this.movieTitleSrc;
               this.newFavorite.imdbId = this.imdbId;
@@ -128,7 +133,7 @@ export class HomeComponent implements OnInit {
   }
 
   deleteFavorite() {
-    let id = 0;
+    let id:number|undefined = 0;
     this.favoriteList.forEach(element => {
       if (element.imdbId == this.imdbId) {
         id = element.favoriteListId;
@@ -139,6 +144,10 @@ export class HomeComponent implements OnInit {
         this.isFavorite = false;
       }
     )
+  }
+  viewReviewList()
+  {
+    this.router.navigateByUrl("/reviewlist");
   }
 
   public toggleSelected() {

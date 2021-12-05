@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@auth0/auth0-angular';
 import { HomeComponent } from 'src/app/Home/home/home.component';
 import { Review } from 'src/app/models/review';
+import { UserModel } from 'src/app/models/user';
 import { ImdbService } from 'src/app/services/imdb.service';
 import { WebAPIService } from 'src/app/services/web-api.service';
 
@@ -17,7 +18,12 @@ export class ReviewComponent implements OnInit {
 
   }
   currentRate = 0;
-  private userId:number = 0;
+  private user:UserModel = {
+    UserId: 0,
+    Email: '',
+    Username: '',
+    Admin: false
+  };
   reviewGroup:FormGroup = new FormGroup({
     text: new FormControl("", Validators.required)
   });
@@ -25,7 +31,7 @@ export class ReviewComponent implements OnInit {
 
   ngOnInit(): void {
     // This is how we find the userId of who is logged in.
-    this.userId = this.webAPI.getId();
+    this.user = this.webAPI.getId();
   }
 
   createReview(revGroup:FormGroup)
@@ -34,9 +40,11 @@ export class ReviewComponent implements OnInit {
     {
       
       let review:Review = {
-        UserId: this.userId,
-        Text: revGroup.get("text")?.value,
-        Rating: this.currentRate
+        userId: this.user.UserId,
+        text: revGroup.get("text")?.value,
+        rating: this.currentRate,
+        imdbId: this.imdbAPI.movieId,
+        username: this.user.Username
       }
       console.log(review);
       this.webAPI.createReview(review).subscribe(
