@@ -14,5 +14,10 @@ namespace Models
 
         [Required]
         public int Rating { get; set; }
+
+        [Required]
+        public string ImdbId { get; set; }
+        [Required]
+        public string Username { get; set; }
     }
 }
