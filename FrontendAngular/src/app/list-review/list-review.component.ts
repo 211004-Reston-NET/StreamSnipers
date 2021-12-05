@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Review } from '../models/review';
+import { UserModel } from '../models/user';
 import { ImdbService } from '../services/imdb.service';
 import { WebAPIService } from '../services/web-api.service';
 
@@ -15,11 +16,14 @@ export class ListReviewComponent implements OnInit {
   
   constructor(private imdbAPI: ImdbService, private webAPI: WebAPIService)
   {
+    
     this.webAPI.getAllReviewByImdbId(this.movieId).subscribe(
       (response) => {
+        
         this.listOfReview = this.listOfReview.concat(response);
         console.log(this.listOfReview);
       });
+    
   }
 
   ngOnInit(): void 
