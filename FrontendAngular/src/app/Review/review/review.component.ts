@@ -19,10 +19,10 @@ export class ReviewComponent implements OnInit {
   }
   currentRate = 0;
   private user:UserModel = {
-    UserId: 0,
-    Email: '',
-    Username: '',
-    Admin: false
+    userId: 0,
+    email: '',
+    username: '',
+    admin: false
   };
   reviewGroup:FormGroup = new FormGroup({
     text: new FormControl("", Validators.required)
@@ -40,11 +40,11 @@ export class ReviewComponent implements OnInit {
     {
       
       let review:Review = {
-        userId: this.user.UserId,
+        userId: this.user.userId,
         text: revGroup.get("text")?.value,
         rating: this.currentRate,
         imdbId: this.imdbAPI.movieId,
-        username: this.user.Username
+        username: this.user.username
       }
       console.log(review);
       this.webAPI.createReview(review).subscribe(
