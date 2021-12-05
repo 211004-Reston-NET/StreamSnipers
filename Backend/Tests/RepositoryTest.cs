@@ -98,7 +98,9 @@ namespace Tests
                         {
                             UserId = 3,
                             Text = "User3's 1st Review",
-                            Rating = 10
+                            Rating = 10,
+                            ImdbId = "tt0126029",
+                            Username = "User3"
                         }
                     },
                     PreviousSearch = new List<PreviousSearch>
@@ -197,10 +199,10 @@ namespace Tests
                 IRepository repo = new Repository(context);
                 string _email = "user1@admin.com";
                 
-                var result = repo.GetUserIdByEmail(_email);
+                var result = repo.GetUserByEmail(_email);
                 
-                Assert.True(result>0);
-                Assert.Equal(1, result);
+                Assert.NotNull(result);
+                Assert.Equal(1, result.UserId);
             }
         }
 
@@ -304,11 +306,11 @@ namespace Tests
                 repo.UpdateFavoriteList(_favoriteToUpdate);
                 using (var _context = new SSDBContext(_options))
                 {
-                  FavoriteList result = repo.GetFavoriteListById(1);
+                    FavoriteList result = repo.GetFavoriteListById(1);
 
-                  Assert.NotNull(result);
+                    Assert.NotNull(result);
 
-                  Assert.Equal("2Imbd4Imbd", result.ImdbId);
+                    Assert.Equal("2Imbd4Imbd", result.ImdbId);
                 }
             }
         }
@@ -519,6 +521,23 @@ namespace Tests
         }
 
         [Fact]
+        public void GetListOfReviewByImdbIdShouldReturnAllReviewsWithTheMatchingImdbId()
+        {
+            using (var context = new SSDBContext(_options))
+            {
+                IRepository repo = new Repository(context);
+                string _imdbId = "tt0126029";
+
+                List<Review> result = repo.GetAllReviewByImdbId(_imdbId);
+
+                Assert.NotNull(result);
+                Assert.Equal(2, result.Count);
+                Assert.Equal(1, result[0].UserId);
+                Assert.Equal("Admin's 1st Review", result[0].Text);
+            }   
+        }
+
+        [Fact]
         public void AddReviewShouldBeAddedToAUserFoundById()
         {
             using (var context = new SSDBContext(_options))
@@ -528,7 +547,9 @@ namespace Tests
                 {
                     UserId = 2,
                     Text = "Movie Sucked",
-                    Rating = 1
+                    Rating = 1,
+                    ImdbId = "tt0126029",
+                    Username = "User2"
                 };
 
                 repo.AddReview(_reviewToAdd);
@@ -556,7 +577,9 @@ namespace Tests
                     UserId = 2,
                     ReviewId = 1,
                     Text = "Movie Sucked",
-                    Rating = 1
+                    Rating = 1,
+                    ImdbId = "tt0126029",
+                    Username = "new name"
                 };
 
                 repo.UpdateReview(_reviewToUpdate);
@@ -613,14 +636,18 @@ namespace Tests
                                 ReviewId = 1,
                                 UserId = 1,
                                 Text = "Admin's 1st Review",
-                                Rating = 5
+                                Rating = 5,
+                                ImdbId = "tt0126029",
+                                Username = "Admin1"
                             },
                             new Review
                             {
                                 ReviewId = 2,
                                 UserId = 1,
                                 Text = "Admin's 2nd Review",
-                                Rating = 10
+                                Rating = 10,
+                                ImdbId = "tt0126029",
+                                Username = "Admin1"
                             }
                         },
                         PreviousSearch = new List<PreviousSearch>

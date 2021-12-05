@@ -44,7 +44,7 @@ namespace Data_Layer
         /// </summary>
         /// <param name="p_email">the email of the user to find.</param>
         /// <returns>the UserId of the user found.</returns>
-        int GetUserIdByEmail(string p_email);
+        User GetUserByEmail(string p_email);
 
         /// <summary>
         /// Will return a list of all FavoriteLists
@@ -149,6 +149,13 @@ namespace Data_Layer
         /// <param name="p_reviewId">The ID for the Review to find.</param>
         /// <returns>The Review found by ReviewId.</returns>
         Review GetReviewById(int p_reviewId);
+
+        /// <summary>
+        /// Will find all reviews associated with the inputted imdbId.
+        /// </summary>
+        /// <param name="p_imdbId">the movie id that will be searched for</param>
+        /// <returns>List of reviews matching movie</returns>
+        List<Review> GetAllReviewByImdbId(string p_imdbId);
 
         /// <summary>
         /// Will Search for a User from p_reviewToAdd.UserId and add p_reviewToAdd to the list of Reviews.

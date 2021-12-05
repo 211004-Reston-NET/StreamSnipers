@@ -71,6 +71,30 @@ namespace WebAPI.Controllers
             }
         }
 
+        // Get api/review/imdb/{id}
+        [HttpGet("imdb/{id}")]
+        public IActionResult GetAllReviewByImdbId(string id)
+        {
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .WriteTo.File(new JsonFormatter(),"Logs/GetAllReviewByImdbId.json")
+                .CreateLogger();
+            try
+            {
+                Log.Information("Get List of Reviews By ImdbId");
+                return Ok(_repo.GetAllReviewByImdbId(id));
+            }
+            catch
+            {
+                Log.Information("Failed Get List of Reviews By ImdbId");
+                return null;
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
+        }
+
         // POST api/review/add
         [HttpPost("add")]
         public IActionResult CreateReview([FromBody] Review value)

@@ -98,7 +98,7 @@ namespace WebAPI.Controllers
         [HttpGet("userid/{p_email}")]
         public IActionResult GetUserIdByEmail(string p_email)
         {
-            return Ok(_repo.GetUserIdByEmail(p_email));
+            return Ok(_repo.GetUserByEmail(p_email));
         }
 
         // POST api/user/add
