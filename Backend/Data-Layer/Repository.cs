@@ -396,10 +396,15 @@ namespace Data_Layer
 
         }
 
-        public int GetUserIdByEmail(string p_email)
+        public User GetUserByEmail(string p_email)
         {
             var result = _context.Users.FirstOrDefault(user => user.Email == p_email);
-            return result.UserId;
+            return result;
+        }
+
+        public List<Review> GetAllReviewByImdbId(string p_imdbId)
+        {
+            return _context.Reviews.Where(rev => rev.ImdbId == p_imdbId).ToList();
         }
     }
 }
