@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Review } from '../models/review';
+import { UserModel } from '../models/user';
 import { ImdbService } from '../services/imdb.service';
 import { WebAPIService } from '../services/web-api.service';
 
@@ -10,9 +12,16 @@ import { WebAPIService } from '../services/web-api.service';
 })
 export class ListReviewItemComponent implements OnInit {
 
-  constructor() {
+  constructor(private webAPI: WebAPIService, private route: ActivatedRoute, private router: Router)
+  {
+    // this allows us to reload page without erasing the data still stored on this.imdbAPI on the list-review.ts file.
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+
     this.randomColor();
+    this.admin = this.webAPI.admin;
   }
+
 
   @Input()
   text:string = '';
@@ -22,11 +31,23 @@ export class ListReviewItemComponent implements OnInit {
 
   @Input()
   username:string = '';
+
+  @Input()
+  reviewId:number|undefined = 0;
   
+  admin: boolean = false;
   
   color: string = '';
 
   ngOnInit(): void {
+    
+  }
+  DeleteReview()
+  {
+    this.webAPI.deleteReview(this.reviewId).subscribe(
+      (response) => {
+        this.router.navigateByUrl('/reviewlist');
+      })
   }
 
   randomColor() {

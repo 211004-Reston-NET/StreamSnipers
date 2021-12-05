@@ -3,6 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { FavoriteList } from 'src/app/models/favoritelist';
+import { UserModel } from 'src/app/models/user';
 import { ImdbService } from 'src/app/services/imdb.service';
 import { WebAPIService } from 'src/app/services/web-api.service';
 
@@ -17,6 +18,8 @@ export class HomeComponent implements OnInit {
 
   @Output()
   isFavorite: boolean = false;
+
+  
 
   imdbId: string = '';
   movePosterSrc: string = '';
@@ -52,8 +55,7 @@ export class HomeComponent implements OnInit {
       public webAPI: WebAPIService,
       private router: Router
     ) {
-    let user = this.webAPI.getId()
-    this.newFavorite.userId = user.userId;
+    this.webAPI.getUser()
     this.searchtext = this.imdbAPI.movieTitle;
     this.auth0.user$.subscribe(
       (profile) => {

@@ -15,9 +15,9 @@ export class WebAPIService {
   constructor(private http:HttpClient, private auth0:AuthService) 
   {
   }
-
+  admin:boolean = false;
   //// Call this function to get the userId of the user logged in. ////
-  getId()
+  getUser()
   {
     let user:UserModel = {
       userId: 0,
@@ -28,7 +28,9 @@ export class WebAPIService {
     this.auth0.user$.subscribe((user) => {
       if (user) {
         this.getUserByEmail(user.email).subscribe((userFound) => {
+          console.log(userFound);
           user = userFound;
+          this.admin = userFound.admin;
           return user;
         });
       }
@@ -57,7 +59,7 @@ export class WebAPIService {
 
   getUserByEmail(p_email:string|undefined|null)
   {
-    return this.http.get<User>(`${this.endpoint}/user/userid/${p_email}`);
+    return this.http.get<UserModel>(`${this.endpoint}/user/userid/${p_email}`);
   }
 
 
@@ -81,6 +83,11 @@ export class WebAPIService {
   createReview(review:Review)
   {
     return this.http.post<Review>(`${this.endpoint}/review/add`, review);
+  }
+
+  deleteReview(p_reviewId:number|undefined)
+  {
+    return this.http.delete<Review>(`${this.endpoint}/review/${p_reviewId}`);
   }
 
 

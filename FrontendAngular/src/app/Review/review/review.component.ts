@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { HomeComponent } from 'src/app/Home/home/home.component';
 import { Review } from 'src/app/models/review';
@@ -13,12 +14,18 @@ import { WebAPIService } from 'src/app/services/web-api.service';
   styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnInit {
-  constructor(private webAPI: WebAPIService, public auth0: AuthService, private imdbAPI: ImdbService)
+  constructor(private webAPI: WebAPIService, public auth0: AuthService, private router: Router, private imdbAPI: ImdbService)
   {
-
+    this.auth0.user$.subscribe((user) => {
+      if (user) {
+        this.webAPI.getUserByEmail(user.email).subscribe((userFound) => {
+          this.user = userFound;
+        });
+      }
+    });
   }
   currentRate = 0;
-  private user:UserModel = {
+  private user: UserModel = {
     userId: 0,
     email: '',
     username: '',
@@ -31,11 +38,12 @@ export class ReviewComponent implements OnInit {
 
   ngOnInit(): void {
     // This is how we find the userId of who is logged in.
-    this.user = this.webAPI.getId();
+    
   }
 
   createReview(revGroup:FormGroup)
   { 
+    console.log(this.user);
     if (revGroup.valid) 
     {
       
@@ -50,6 +58,7 @@ export class ReviewComponent implements OnInit {
       this.webAPI.createReview(review).subscribe(
         (response) => {
           console.log(response);
+          this.router.navigateByUrl('/reviewlist');
         })
     }
   }
