@@ -152,6 +152,11 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl("/reviewlist");
   }
 
+  viewRecommendList()
+  {
+    this.router.navigateByUrl("/recommend");
+  }
+
   public toggleSelected() {
     this.selected = !this.selected;
     this.selectedChange.emit(this.selected);

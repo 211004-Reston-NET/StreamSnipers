@@ -129,3 +129,12 @@ h1 {
 .tester{
   display: inline-block;
 }
+
+@font-face {
+  font-family: 'Movie'; /*a name to be used later*/
+  src: url('HOMOARAK.TTF'); /*URL to font*/
+}
+
+.headerfont{
+  font-family: 'Movie';
+}

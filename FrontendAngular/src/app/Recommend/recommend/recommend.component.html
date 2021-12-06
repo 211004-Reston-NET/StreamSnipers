@@ -1,1 +1,10 @@
-<p>recommend works!</p>
+<br />
+<h1 class="center">{{movieTitle}} Recommendations</h1>
+<br />
+<div class="container">
+    <div class="card-deck justify-content-center">
+        <div *ngFor="let review of listOfReview;">
+            <app-list-review-item [reviewId]="review.reviewId" [text]="review.text" [rating]="review.rating" [username]="review.username"></app-list-review-item>
+        </div>
+    </div>
+</div>

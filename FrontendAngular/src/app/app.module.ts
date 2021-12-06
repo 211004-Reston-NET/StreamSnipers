@@ -55,6 +55,7 @@ import { ListReviewItemComponent } from './list-review-item/list-review-item.com
       {path: "review", component:ReviewComponent},
       {path: "favorite", component:FavoriteComponent},
       {path: "reviewlist", component:ListReviewComponent},
+      {path: "recommend", component:RecommendComponent},
       {path: "**", component:HomeComponent}
     ])
   ],
