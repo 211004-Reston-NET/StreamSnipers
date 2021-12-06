@@ -1,7 +1,7 @@
 <br />
-<h1 class="center">{{movieTitle}} Reviews</h1>
+<h1 class="center standardfont">{{movieTitle}} Reviews</h1>
 <br />
-<div class="container">
+<div class="container standardfont">
     <div class="card-deck justify-content-center">
         <div *ngFor="let review of listOfReview;">
             <app-list-review-item [reviewId]="review.reviewId" [text]="review.text" [rating]="review.rating" [username]="review.username"></app-list-review-item>

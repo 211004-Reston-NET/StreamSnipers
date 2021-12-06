@@ -6,16 +6,11 @@
     <link rel="stylesheet" href="home.component.css">
 </head>
 
-<body>
-    <h1>Stream Snipers</h1>
+<body class="standardfont">
+    <h1 class="headerfont">Stream Snipers</h1>
     <br />
     <div class="text-sm-left">
         <form class="search d-flex">
-            <select class="form-select form-select-custom">
-                <option>All</option>
-                <option>Genre</option>
-                <option>Platform</option>
-            </select>
             <input class="form-control" type="text" id="searchtext" name="searchtext" #searchtext placeholder="Search..." />
             <button class="btn btn-secondary" type="submit" (click)="imdbSearch(searchtext.value)"
                 action="/FrontendAngular/src/app/Search/search/search.component.html"><i
@@ -46,6 +41,9 @@
                                     <button *ngSwitchCase="false" class="btn btn-success" (click)="addToFavorites()">Add to Favorites</button>
                                 </div>
                                 <button class="btn btn-info" (click)="viewReviewList()">View Reviews</button>
+                                <div>
+                                <button class="btn btn-light" (click)="viewRecommendList()">View Recommendations</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -57,7 +55,7 @@
     <br />
     <br />
     <div class="card border-secondary mb-3 cen" style="max-width: 40rem;">
-        <div class="card-body">
+        <div class="card-body standardfont">
             <h4 class="card-title">Welcome to Stream Snipers!</h4>
             <p class="card-text">This platform allows you to find which streaming service has the shows that you want to watch.</p>
             <p class="card-text">Here you have the ability to search up any show, sort by genre, add a show to your favorites list, and more!</p>
