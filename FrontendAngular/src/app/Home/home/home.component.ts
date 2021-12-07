@@ -3,10 +3,6 @@ import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-// import { profile } from 'console';
-=======
-//import { profile } from 'console';
->>>>>>> Stashed changes
 import { AddByEmail } from 'src/app/models/addUserEmail';
 import { FavoriteList } from 'src/app/models/favoritelist';
 import { UserModel } from 'src/app/models/user';
