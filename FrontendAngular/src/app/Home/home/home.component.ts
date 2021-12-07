@@ -159,6 +159,7 @@ StreamingInfo = {
                 (result) => {
                   console.log(result);
                   console.log(result.streamingInfo);
+                  // Netflix
                   if (result.streamingInfo.netflix)
                   {
                     this.StreamingInfo.netflix = true;
@@ -169,29 +170,48 @@ StreamingInfo = {
                   {
                     this.StreamingInfo.netflix = false;
                   }
+                  // HBO Max
                   if (result.streamingInfo.hbo)
                   {
                     this.StreamingInfo.hbo = true;
                     this.StreamingInfo.hboLink = result.streamingInfo.hbo.us.link;
                     this.newFavorite.hboMax = true;
                   }
+                  else 
+                  {
+                    this.StreamingInfo.hbo= false;
+                  }
+                  // Hulu
                   if (result.streamingInfo.hulu)
                   {
                     this.StreamingInfo.hulu = true;
                     this.StreamingInfo.huluLink = result.streamingInfo.hulu.us.link;
                     this.newFavorite.hulu = true;
                   }
+                  else 
+                  {
+                    this.StreamingInfo.hulu = false;
+                  }
+                  // Disney+
                   if (result.streamingInfo.disney)
                   {
                     this.StreamingInfo.disneyplus = true;
                     this.StreamingInfo.disneyplusLink = result.streamingInfo.disney.us.link;
                     this.newFavorite.disneyPlus = true;
                   }
+                  else 
+                  {
+                    this.StreamingInfo.disneyplus = false;
+                  }
                   if (result.streamingInfo.prime)
                   {
                     this.StreamingInfo.amazonprime = true;
                     this.StreamingInfo.amazonprimeLink = result.streamingInfo.prime.us.link;
                     this.newFavorite.amazonVideo = true;
+                  }
+                  else 
+                  {
+                    this.StreamingInfo.amazonprime = false;
                   }
                 }
               )
