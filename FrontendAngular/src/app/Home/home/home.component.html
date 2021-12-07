@@ -52,10 +52,25 @@
             </div>
         </div>
     </div>
+    <br/>
+<div class="card-deck justify-content-center centerone">
     <div *ngIf ="StreamingInfo.netflix">
-        <app-streaming-link [streamLink]="StreamingInfo.netflixLink" [titleName]="StreamingInfo.netflixName"></app-streaming-link>
-
+        <app-streaming-link [streamLink]="StreamingInfo.netflixLink" [titleName]="StreamingInfo.netflixName" [color]="'bg-danger'"></app-streaming-link> <!--copy this div for all the services-->
     </div>
+    <div *ngIf ="StreamingInfo.hulu">
+        <app-streaming-link [streamLink]="StreamingInfo.huluLink" [titleName]="StreamingInfo.huluName" [color]="'bg-success'"></app-streaming-link> <!--copy this div for all the services-->
+    </div>
+    <div *ngIf ="StreamingInfo.hbo">
+        <app-streaming-link [streamLink]="StreamingInfo.hboLink" [titleName]="StreamingInfo.hboName" [color]="'bg-dark'"></app-streaming-link> <!--copy this div for all the services-->
+    </div>
+    <div *ngIf ="StreamingInfo.disneyplus">
+        <app-streaming-link [streamLink]="StreamingInfo.disneyplusLink" [titleName]="StreamingInfo.disneyplusName" [color]="'bg-primary'"></app-streaming-link> <!--copy this div for all the services-->
+    </div>
+    <div *ngIf ="StreamingInfo.amazonprime">
+        <app-streaming-link [streamLink]="StreamingInfo.amazonprimeLink" [titleName]="StreamingInfo.amazonprimeName" [color]="'bg-info'"></app-streaming-link> <!--copy this div for all the services-->
+    </div>
+</div>
+
     <br />
     <br />
     <div class="card border-secondary mb-3 cen" style="max-width: 40rem;">
@@ -63,7 +78,7 @@
             <h4 class="card-title">Welcome to Stream Snipers!</h4>
             <p class="card-text">This platform allows you to find which streaming service has the shows that you want to watch.</p>
             <p class="card-text">Here you have the ability to search up any show, sort by genre, add a show to your favorites list, and more!</p>
-            <p class="card-text">Some more meaningless text can go here to fill page space! You could even add images!</p>
+            <p class="card-text">Here To Aim You In The Right Direction!</p>
         </div>
     </div>
     <br />

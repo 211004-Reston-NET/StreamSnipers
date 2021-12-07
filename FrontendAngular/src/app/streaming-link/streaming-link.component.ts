@@ -20,6 +20,7 @@ streamLink:string = "";
 @Input()
 titleName:string = "";
 
+@Input()
 color:string = "";
 
 goToLink(){

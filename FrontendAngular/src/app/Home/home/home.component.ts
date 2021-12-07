@@ -26,12 +26,16 @@ StreamingInfo = {
   netflixName: "Netflix",
   netflixLink: "",
   hbo: false,
+  hboName: "Hbo",
   hboLink: "",
   hulu: false,
+  huluName: "Hulu",
   huluLink: "",
   disneyplus: false,
+  disneyplusName: "Disney Plus",
   disneyplusLink: "",
   amazonprime: false,
+  amazonprimeName: "Amazon Prime",
   amazonprimeLink: ""
 
 }
@@ -144,6 +148,10 @@ StreamingInfo = {
                   {
                     this.StreamingInfo.netflix = true;
                     this.StreamingInfo.netflixLink = result.streamingInfo.netflix.us.link;
+                  }
+                  else 
+                  {
+                    this.StreamingInfo.netflix = false;
                   }
                   if (result.streamingInfo.hbo)
                   {
