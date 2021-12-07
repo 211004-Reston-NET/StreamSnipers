@@ -49,6 +49,7 @@ Then I am able to edit any of my saved information or view any previous orders I
 * Serilog (logging)
 * SonorCloud Code Analysis
 * Xunit (unit testing)
+* Bootstrap
 * Bootswatch (Vapor)
 
 
