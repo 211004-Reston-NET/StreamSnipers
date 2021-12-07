@@ -53,8 +53,11 @@ Then I am able to edit any of my saved information or view any previous orders I
 ## Contributors
 
 [Colin Mudie](https://github.com/ColinMudie)
+
 [Chase Henry](https://github.com/chasehenry862)
+
 [Ayogh Agborbesong](https://github.com/Asaku1)
+
 [Jacob Williams](https://github.com/JakeWill5)
 
 ## Links
