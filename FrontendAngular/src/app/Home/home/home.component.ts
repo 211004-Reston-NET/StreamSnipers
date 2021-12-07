@@ -3,7 +3,7 @@ import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { profile } from 'console';
+// import { profile } from 'console';
 import { AddByEmail } from 'src/app/models/addUserEmail';
 import { FavoriteList } from 'src/app/models/favoritelist';
 import { UserModel } from 'src/app/models/user';
@@ -77,21 +77,28 @@ StreamingInfo = {
     ) {
     this.webAPI.getUser()
     this.searchtext = this.imdbAPI.movieTitle;
+
     this.auth0.user$.subscribe(
       (profile) => {
         if (profile) {
-          // check if user is in db already
+          console.log(profile);
           this.webAPI.loginUser(profile.email).subscribe(
             (response) => {
+              console.log('login');
+              console.log(response);
               if (!response) {
-                // post new user here using profile.email 
-              }
-              else {
-                this.newFavorite.userId = response.userId;
-                this.userId = response.userId;
+                var addByEmail: AddByEmail = {
+                  email: profile.email?.toString()!,
+                  username: profile.nickname
+                };
+                this.webAPI.addUserByEmail(addByEmail).subscribe(
+                  (response) => {
+                    console.log(response);
+                  }
+                )
               }
             }
-          )
+          );
         }
       }
     );
@@ -107,25 +114,7 @@ StreamingInfo = {
       this.imdbSearch(this.searchtext);
     }
 
-    this.auth0.user$.subscribe(
-      (profile) => {
-        if (profile) {
-          console.log(profile);
-          this.webAPI.loginUser(profile.email).subscribe(
-            (response) => {
-              if (!response) {
-                var addByEmail: AddByEmail = {
-                email: profile.email?.toString()!,
-                username: profile.nickname
-              };
-              this.webAPI.addUserByEmail(addByEmail);
-            }
-          }
-        );
-
-      }
-    }
-  );
+    
 }
 
   imdbSearch(search: string) {
@@ -140,6 +129,7 @@ StreamingInfo = {
         if (this.imdbId) {
           this.imdbAPI.imdbMovieSearch(this.imdbId).subscribe(
             (res) => {
+              console.log(res);
               // got the movie stuff here.
               this.movePosterSrc = res.image;
               this.movieTitleSrc = res.title;
