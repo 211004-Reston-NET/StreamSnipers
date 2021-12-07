@@ -12,14 +12,20 @@ You will be able to:
 - Login to an account
 - Search for a show/movie.
 - Add a show/movie to your favorites list.
+- View a list of your favorite shows.
+- View how many of your favorited shows are on a certain streaming platform.
 - Write a review for a show/movie.
-- view order history for both the customer and the store.
-- Replenish inventory of a given item at a store.
+- View a list of reviews for a show/movie.
+- View recommendations based on a searched show/movie.
+- View pricing of different streaming services.
+- Access direct links to purchase streaming services.
+- Access direct links to view a show/movie on a streaming platform.
+- View an about page with information on the project and creators.
 
 
 ## User Story
-Given I am a poor soul looking to get into an expensive hobby,   
-I want an app that allows me to purchase the resources needed to begin a modular journey. 
+Given I am a poor soul looking to watch my favorite shows and movies at a reasonable price,   
+I want an app that allows me to see which shows and movies are on which streaming services and allows me to compare prices. 
 When I open the app  
 Then I am asked to Log In to my own account or Create a new one   
 When I am logged in  
@@ -33,13 +39,13 @@ Then I am able to edit any of my saved information or view any previous orders I
 
 ## Technologies
 * C#
-* ASP.NET MVC Framwork
 * ASP.NET Identity
 * MS SQL 
 * Microsoft Azure
 * ADO.NET Entity Framwork (code first approach)
 * LINQ
 * CI/CD Pipeline
+* Serilog (logging)
 * SonorCloud Code Analysis
 * Xunit (unit testing)
 
@@ -47,16 +53,18 @@ Then I am able to edit any of my saved information or view any previous orders I
 ## Contributors
 
 [Colin Mudie](https://github.com/ColinMudie)
-
+[Chase Henry](https://github.com/chasehenry862)
+[Ayogh Agborbesong](https://github.com/Asaku1)
+[Jacob Williams](https://github.com/JakeWill5)
 
 ## Links
-[GitHub Repository](https://github.com/211004-Reston-NET/Colin-Mudie-P1)
+[GitHub Repository](https://github.com/211004-Reston-NET/StreamSnipers)
 
 ## License
 
 MIT License
 
-Copyright (c) [2021] [Colin Mudie]
+Copyright (c) [2021] [Colin Mudie][Chase Henry][Ayogh Agborbesong][Jacob Williams]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
