@@ -39,7 +39,7 @@ Then I am able to edit any of my saved information or view any previous orders I
 
 ## Technologies
 * C#
-* ASP.NET Identity
+* ASP.NET API
 * MS SQL 
 * Microsoft Azure
 * ADO.NET Entity Framwork (code first approach)
