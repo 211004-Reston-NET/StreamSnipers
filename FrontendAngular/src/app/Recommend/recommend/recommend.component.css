@@ -1,3 +1,26 @@
 .center {
     text-align: center;
   }
+  
+  h1 {
+    text-align: center;
+    font-size: 60px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+
+  .cover{
+    text-align:left;
+    margin: auto;
+    width: 100%
+  }
+
+  .right{
+    text-align:right;
+  }
+
+.noBorder
+{
+  border: 0px;
+}

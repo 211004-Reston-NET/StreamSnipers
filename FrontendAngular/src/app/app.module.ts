@@ -21,6 +21,7 @@ import { FavoriteItemComponent } from './favorite-item/favorite-item.component';
 import { ListReviewComponent } from './list-review/list-review.component';
 import { ListReviewItemComponent } from './list-review-item/list-review-item.component';
 import { StreamingLinkComponent } from './streaming-link/streaming-link.component';
+import { ListRecommendComponent } from './list-recommend/list-recommend.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { StreamingLinkComponent } from './streaming-link/streaming-link.componen
     FavoriteItemComponent,
     ListReviewComponent,
     ListReviewItemComponent,
-    StreamingLinkComponent
+    StreamingLinkComponent,
+    ListRecommendComponent
   ],
   imports: [
     NgbModule,
