@@ -11,7 +11,8 @@
     <br />
     <div class="text-sm-left">
         <form class="search d-flex">
-            <input class="form-control" type="text" id="searchtext" name="searchtext" #searchtext placeholder="Search..." />
+            <input class="form-control" type="text" id="searchtext" name="searchtext" #searchtext
+                placeholder="Search..." />
             <button class="btn btn-secondary" type="submit" (click)="imdbSearch(searchtext.value)"
                 action="/FrontendAngular/src/app/Search/search/search.component.html"><i
                     class="submit">Submit</i></button>
@@ -22,11 +23,12 @@
         <div class="row">
             <div class="col-md-6">
                 <!--can add padding in quotes here-->
-                <img class="center-block img-fluid  card border-primary posterBorder" style="width: 85%" [src]="movePosterSrc">
+                <img class="center-block img-fluid  card border-primary posterBorder" style="width: 85%"
+                    [src]="movePosterSrc">
             </div>
             <br />
             <div class="col-md-6 ">
-                <div class="card border-success mb-3 posterBorder" style="width: 85%;" >
+                <div class="card border-success mb-3 posterBorder" style="width: 85%;">
                     <div class="card text-white bg-primary  center-block" style="width: 100%; height: 100%;">
                         <div class="card-body" style="width: 100%;">
                             <h2 class="card-title cen">{{ movieTitleSrc }}</h2>
@@ -35,49 +37,67 @@
                                 <p class="card-text">{{movieReleaseDateSrc}}</p>
                                 <p class="card-text">{{movieRuntimeSrc}}</p>
                                 <p class="card-text">{{movieAwardsSrc}}</p>
-                                <button class="btn btn-secondary" (click)="goToReview()">Write a Review</button>
-                                <div [ngSwitch]="isFavorite">
-                                    <button *ngSwitchCase="true" class="btn btn-danger" (click)="deleteFavorite()">Remove from Favorites</button>
-                                    <button *ngSwitchCase="false" class="btn btn-success" (click)="addToFavorites()">Add to Favorites</button>
+                                <div class="row">
+                                    <button class="btn btn-secondary" (click)="goToReview()">Write a Review</button>
                                 </div>
-                                <button class="btn btn-info" (click)="viewReviewList()">View Reviews</button>
-                                <div>
-                                <button class="btn btn-light" (click)="viewRecommendList()">View Recommendations</button>
+                                <div [ngSwitch]="isFavorite" class="row">
+                                    <button *ngSwitchCase="true" class="btn btn-danger"
+                                        (click)="deleteFavorite()">Remove from Favorites</button>
+                                    <button *ngSwitchCase="false" class="btn btn-success" (click)="addToFavorites()">Add
+                                        to Favorites</button>
+                                </div>
+
+                                <div class="row">
+                                    <button class="btn btn-info" (click)="viewReviewList()">View Reviews</button>
+                                    <button class="btn btn-light" (click)="viewRecommendList()">View
+                                        Recommendations</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
-    <br/>
-<div class="card-deck justify-content-center centerone">
-    <div *ngIf ="StreamingInfo.netflix">
-        <app-streaming-link [streamLink]="StreamingInfo.netflixLink" [titleName]="StreamingInfo.netflixName" [color]="'bg-danger'"></app-streaming-link> <!--copy this div for all the services-->
+    <br />
+    <div class="card-deck justify-content-center centerone">
+        <div *ngIf="StreamingInfo.netflix">
+            <app-streaming-link  [streamLink]="StreamingInfo.netflixLink" [titleName]="StreamingInfo.netflixName"
+                [color]="'bg-danger'"></app-streaming-link>
+            <!--copy this div for all the services-->
+        </div>
+        <div *ngIf="StreamingInfo.hulu">
+            <app-streaming-link [streamLink]="StreamingInfo.huluLink" [titleName]="StreamingInfo.huluName"
+                [color]="'bg-success'"></app-streaming-link>
+            <!--copy this div for all the services-->
+        </div>
+        <div *ngIf="StreamingInfo.hbo">
+            <app-streaming-link [streamLink]="StreamingInfo.hboLink" [titleName]="StreamingInfo.hboName"
+                [color]="'bg-dark'"></app-streaming-link>
+            <!--copy this div for all the services-->
+        </div>
+        <div *ngIf="StreamingInfo.disneyplus">
+            <app-streaming-link [streamLink]="StreamingInfo.disneyplusLink" [titleName]="StreamingInfo.disneyplusName"
+                [color]="'bg-primary'"></app-streaming-link>
+            <!--copy this div for all the services-->
+        </div>
+        <div *ngIf="StreamingInfo.amazonprime">
+            <app-streaming-link [streamLink]="StreamingInfo.amazonprimeLink" [titleName]="StreamingInfo.amazonprimeName"
+                [color]="'bg-info'"></app-streaming-link>
+            <!--copy this div for all the services-->
+        </div>
     </div>
-    <div *ngIf ="StreamingInfo.hulu">
-        <app-streaming-link [streamLink]="StreamingInfo.huluLink" [titleName]="StreamingInfo.huluName" [color]="'bg-success'"></app-streaming-link> <!--copy this div for all the services-->
-    </div>
-    <div *ngIf ="StreamingInfo.hbo">
-        <app-streaming-link [streamLink]="StreamingInfo.hboLink" [titleName]="StreamingInfo.hboName" [color]="'bg-dark'"></app-streaming-link> <!--copy this div for all the services-->
-    </div>
-    <div *ngIf ="StreamingInfo.disneyplus">
-        <app-streaming-link [streamLink]="StreamingInfo.disneyplusLink" [titleName]="StreamingInfo.disneyplusName" [color]="'bg-primary'"></app-streaming-link> <!--copy this div for all the services-->
-    </div>
-    <div *ngIf ="StreamingInfo.amazonprime">
-        <app-streaming-link [streamLink]="StreamingInfo.amazonprimeLink" [titleName]="StreamingInfo.amazonprimeName" [color]="'bg-info'"></app-streaming-link> <!--copy this div for all the services-->
-    </div>
-</div>
 
     <br />
     <br />
     <div class="card border-secondary mb-3 cen" style="max-width: 40rem;">
         <div class="card-body standardfont">
             <h4 class="card-title">Welcome to Stream Snipers!</h4>
-            <p class="card-text">This platform allows you to find which streaming service has the shows that you want to watch.</p>
-            <p class="card-text">Here you have the ability to search up any show, sort by genre, add a show to your favorites list, and more!</p>
+            <p class="card-text">This platform allows you to find which streaming service has the shows that you want to
+                watch.</p>
+            <p class="card-text">Here you have the ability to search up any show, sort by genre, add a show to your
+                favorites list, and more!</p>
             <p class="card-text">Here To Aim You In The Right Direction!</p>
         </div>
     </div>
@@ -86,15 +106,22 @@
     <div class="row">
         <div class="movielist ">
             <!--can add padding in quotes here-->
-            <img class ="crop card border-info posterBorder " style="display:inline-block;" src = 'https://i.imgur.com/PpQx75n.jpg'/>
-            <img class ="crop card border-success posterBorder " style="display:inline-block;" src = 'https://i.imgur.com/dSaF8MI.jpg'/>
-            <img class ="crop card border-warning posterBorder " style="display:inline-block;" src = 'https://i.imgur.com/SMYZxcU.jpg'/>
-            <img class ="crop card border-light posterBorder " style="display:inline-block;" src = 'https://i.imgur.com/Q0WOPGX.jpg'/>
-            <img class ="crop card border-warning posterBorder " style="display:inline-block;" src = 'https://i.imgur.com/J0SMAW8.jpg'/>
-            <img class ="crop card border-success posterBorder " style="display:inline-block;" src = 'https://i.imgur.com/PrH0JHH.jpg'/>
-            <img class ="crop card border-info posterBorder " style="display:inline-block;" src = 'https://i.imgur.com/6F1pMkP.jpg'/>
+            <img class="crop card border-info posterBorder " style="display:inline-block;"
+                src='https://i.imgur.com/PpQx75n.jpg' />
+            <img class="crop card border-success posterBorder " style="display:inline-block;"
+                src='https://i.imgur.com/dSaF8MI.jpg' />
+            <img class="crop card border-warning posterBorder " style="display:inline-block;"
+                src='https://i.imgur.com/SMYZxcU.jpg' />
+            <img class="crop card border-light posterBorder " style="display:inline-block;"
+                src='https://i.imgur.com/Q0WOPGX.jpg' />
+            <img class="crop card border-warning posterBorder " style="display:inline-block;"
+                src='https://i.imgur.com/J0SMAW8.jpg' />
+            <img class="crop card border-success posterBorder " style="display:inline-block;"
+                src='https://i.imgur.com/PrH0JHH.jpg' />
+            <img class="crop card border-info posterBorder " style="display:inline-block;"
+                src='https://i.imgur.com/6F1pMkP.jpg' />
 
         </div>
-        
+
     </div>
 </body>
