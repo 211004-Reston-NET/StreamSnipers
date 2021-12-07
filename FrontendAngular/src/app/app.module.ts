@@ -9,7 +9,7 @@ import { ReviewComponent } from './Review/review/review.component';
 import { SearchComponent } from './Search/search/search.component';
 import { RecommendComponent } from './Recommend/recommend/recommend.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthModule } from '@auth0/auth0-angular';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
@@ -22,6 +22,7 @@ import { ListReviewComponent } from './list-review/list-review.component';
 import { ListReviewItemComponent } from './list-review-item/list-review-item.component';
 import { StreamingLinkComponent } from './streaming-link/streaming-link.component';
 import { ListRecommendComponent } from './list-recommend/list-recommend.component';
+import { CorsInterceptorService } from './services/cors-interceptor.service';
 
 
 @NgModule({
@@ -63,7 +64,7 @@ import { ListRecommendComponent } from './list-recommend/list-recommend.componen
       {path: "**", component:HomeComponent}
     ])
   ],
-  providers: [ImdbService],
+  providers: [ImdbService, {provide: HTTP_INTERCEPTORS, useClass: CorsInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
