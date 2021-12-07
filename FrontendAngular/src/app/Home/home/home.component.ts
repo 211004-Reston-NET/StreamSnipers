@@ -3,6 +3,8 @@ import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { profile } from 'console';
+import { AddByEmail } from 'src/app/models/addUserEmail';
 import { FavoriteList } from 'src/app/models/favoritelist';
 import { UserModel } from 'src/app/models/user';
 import { ImdbService } from 'src/app/services/imdb.service';
@@ -105,8 +107,26 @@ StreamingInfo = {
       this.imdbSearch(this.searchtext);
     }
 
+    this.auth0.user$.subscribe(
+      (profile) => {
+        if (profile) {
+          console.log(profile);
+          this.webAPI.loginUser(profile.email).subscribe(
+            (response) => {
+              if (!response) {
+                var addByEmail: AddByEmail = {
+                email: profile.email?.toString()!,
+                username: profile.nickname
+              };
+              this.webAPI.addUserByEmail(addByEmail);
+            }
+          }
+        );
 
-  }
+      }
+    }
+  );
+}
 
   imdbSearch(search: string) {
     this.imdbAPI.imdbIdSearch(search).subscribe(

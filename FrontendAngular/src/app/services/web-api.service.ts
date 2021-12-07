@@ -6,6 +6,7 @@ import { FavoriteList } from '../models/favoritelist';
 import { Review } from '../models/review';
 import { User } from '@auth0/auth0-spa-js';
 import { UserModel } from '../models/user';
+import { AddByEmail } from '../models/addUserEmail';
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +63,11 @@ export class WebAPIService {
     return this.http.get<UserModel>(`${this.endpoint}/user/userid/${p_email}`);
   }
 
+  addUserByEmail(userRequest: AddByEmail): Observable<User>
+   {
+    return this.http.post<User>(this.endpoint + '/user/email', userRequest); 
+   }
+   /*---------End of addUserByEmail method-------------------------*/
 
 
   ////////////// Review //////////////
