@@ -20,6 +20,7 @@ import { ImdbService } from './services/imdb.service';
 import { FavoriteItemComponent } from './favorite-item/favorite-item.component';
 import { ListReviewComponent } from './list-review/list-review.component';
 import { ListReviewItemComponent } from './list-review-item/list-review-item.component';
+import { StreamingLinkComponent } from './streaming-link/streaming-link.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ListReviewItemComponent } from './list-review-item/list-review-item.com
     FeaturesComponent,
     FavoriteItemComponent,
     ListReviewComponent,
-    ListReviewItemComponent
+    ListReviewItemComponent,
+    StreamingLinkComponent
   ],
   imports: [
     NgbModule,

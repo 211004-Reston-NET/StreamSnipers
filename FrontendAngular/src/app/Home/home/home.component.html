@@ -54,6 +54,10 @@
             </div>
         </div>
     </div>
+    <div *ngIf ="StreamingInfo.netflix">
+        <app-streaming-link [streamLink]="StreamingInfo.netflixLink" [titleName]="StreamingInfo.netflixName"></app-streaming-link>
+
+    </div>
     <br />
     <br />
     <div class="card border-secondary mb-3 cen" style="max-width: 40rem;">
