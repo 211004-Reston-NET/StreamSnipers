@@ -67,7 +67,7 @@ Then I am able to edit any of my saved information or view any previous orders I
 
 MIT License
 
-Copyright (c) [2021] [Colin Mudie][Chase Henry][Ayogh Agborbesong][Jacob Williams]
+Copyright (c) [2021] [Colin Mudie] [Chase Henry] [Ayogh Agborbesong] [Jacob Williams]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
