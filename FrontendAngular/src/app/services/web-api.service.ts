@@ -64,10 +64,10 @@ export class WebAPIService {
   }
 
   addUserByEmail(userRequest: AddByEmail): Observable<User>
-   {
-    return this.http.post<User>(this.endpoint + '/user/email', userRequest); 
-   }
-   /*---------End of addUserByEmail method-------------------------*/
+    {
+    return this.http.post<User>(this.endpoint + '/user/add', userRequest); 
+    }
+    /*---------End of addUserByEmail method-------------------------*/
 
 
   ////////////// Review //////////////
