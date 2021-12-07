@@ -43,7 +43,10 @@ namespace WebAPI
                                             builder =>
                                             {
                                                 builder.WithOrigins("http://localhost:4200/", 
-                                                                    "https://stream-snipers-frontend.azurewebsites.net/");
+                                                                    "https://stream-snipers-frontend.azurewebsites.net/")
+                                                .AllowAnyHeader()
+                                                .WithMethods("GET", "POST", "PUT", "DELETE")
+                                                .WithExposedHeaders("*");
                                             });
                     // builder.AddDefaultPolicy((policy) => {
                     //     policy.WithOrigins("http://localhost:4200/", "https://stream-snipers-frontend.azurewebsites.net/")
