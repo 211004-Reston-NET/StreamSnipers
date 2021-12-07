@@ -94,9 +94,11 @@ StreamingInfo = {
                 this.webAPI.addUserByEmail(addByEmail).subscribe(
                   (response) => {
                     console.log(response);
+                    this.newFavorite.userId = response.userId;
                   }
                 )
               }
+              this.newFavorite.userId = response.userId;
             }
           );
         }
@@ -124,6 +126,10 @@ StreamingInfo = {
         this.favoriteList.forEach(element => {
           if (element.imdbId == response.results[0].id) {
             this.isFavorite = true;
+          }
+          else
+          {
+            this.isFavorite = false;
           }
         });
         if (this.imdbId) {
@@ -154,26 +160,31 @@ StreamingInfo = {
                   {
                     this.StreamingInfo.netflix = true;
                     this.StreamingInfo.netflixLink = result.streamingInfo.netflix.us.link;
+                    this.newFavorite.netflix = true;
                   }
                   if (result.streamingInfo.hbo)
                   {
                     this.StreamingInfo.hbo = true;
                     this.StreamingInfo.hboLink = result.streamingInfo.hbo.us.link;
+                    this.newFavorite.hboMax = true;
                   }
                   if (result.streamingInfo.hulu)
                   {
                     this.StreamingInfo.hulu = true;
                     this.StreamingInfo.huluLink = result.streamingInfo.hulu.us.link;
+                    this.newFavorite.hulu = true;
                   }
                   if (result.streamingInfo.disney)
                   {
                     this.StreamingInfo.disneyplus = true;
                     this.StreamingInfo.disneyplusLink = result.streamingInfo.disney.us.link;
+                    this.newFavorite.disneyPlus = true;
                   }
                   if (result.streamingInfo.prime)
                   {
                     this.StreamingInfo.amazonprime = true;
                     this.StreamingInfo.amazonprimeLink = result.streamingInfo.prime.us.link;
+                    this.newFavorite.amazonVideo = true;
                   }
                 }
               )
@@ -188,6 +199,7 @@ StreamingInfo = {
   addToFavorites() {
     this.webAPI.createFavorite(this.newFavorite).subscribe(
       (response) => {
+        console.log(response);
         this.isFavorite = true;
       });
   }

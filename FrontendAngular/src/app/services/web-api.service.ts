@@ -63,9 +63,9 @@ export class WebAPIService {
     return this.http.get<UserModel>(`${this.endpoint}/user/userid/${p_email}`);
   }
 
-  addUserByEmail(userRequest: AddByEmail): Observable<User>
+  addUserByEmail(userRequest: AddByEmail): Observable<UserModel>
     {
-    return this.http.post<User>(this.endpoint + '/user/add', userRequest); 
+    return this.http.post<UserModel>(this.endpoint + '/user/add', userRequest); 
     }
     /*---------End of addUserByEmail method-------------------------*/
 

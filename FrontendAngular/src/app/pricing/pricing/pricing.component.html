@@ -14,9 +14,9 @@
           <p class="card-text">Basic Plan: $8.99/month</p>
           <p class="card-text">Standard Plan: $13.99/month</p>
           <p class="card-text">Premium Plan: $17.99/month</p>
-          <p class="card-text">Shows Favorited: 0</p>
+          <p class="card-text">Shows Favorited: {{totalFavorites.netflix}}</p>
           <div class="btn-center bottom">
-            <button class="btn btn-danger wide" onclick="window.location.href='https://www.netflix.com';">
+            <button class="btn btn-danger wide" onclick="window.open('https://www.netflix.com');">
               Subscribe
             </button>
           </div>
@@ -32,9 +32,9 @@
           <p class="card-text">Basic Plan: $6.99/month</p>
           <p class="card-text">Hulu + No Ads: $12.99/month</p>
           <p class="card-text">Hulu Basic + Live TV: $64.99/month</p>
-          <p class="card-text">Shows Favorited: 0</p>
+          <p class="card-text">Shows Favorited: {{totalFavorites.hulu}}</p>
           <div class="btn-center bottom">
-            <button class="btn btn-success wide" onclick="window.location.href='https://www.hulu.com';">
+            <button class="btn btn-success wide" onclick="window.open('https://www.hulu.com');">
               Subscribe
             </button>
           </div>
@@ -50,9 +50,9 @@
           <p class="card-text">Basic Plan: $7.99/month</p>
           <p class="card-text">Hulu + Disney+: $13.99/month</p>
           <p class="card-text">Hulu + No Ads + Disney+: $19.99/month</p>
-          <p class="card-text">Shows Favorited: 0</p>
+          <p class="card-text">Shows Favorited: {{totalFavorites.disneyPlus}}</p>
           <div class="btn-center bottom">
-            <button class="btn btn-info wide" onclick="window.location.href='https://www.disneyplus.com';">
+            <button class="btn btn-info wide" onclick="window.open('https://www.disneyplus.com');">
               Subscribe
             </button>
           </div>
@@ -67,9 +67,9 @@
           <p class="text-primary">_______________</p>
           <p class="card-text">Basic Plan: $9.99/month</p>
           <p class="card-text">HBO Max + No Ads: $14.99/month</p>
-          <p class="card-text">Shows Favorited: 0</p>
+          <p class="card-text">Shows Favorited: {{totalFavorites.hboMax}}</p>
           <div class="btn-center bottom">
-            <button class="btn btn-primary wide" onclick="window.location.href='https://www.hbo.com/ways-to-get';">
+            <button class="btn btn-primary wide" onclick="window.open('https://www.hbo.com/ways-to-get');">
               Subscribe
             </button>
           </div>
@@ -84,10 +84,10 @@
           <p class="text-light">_______________</p>
           <p class="card-text">Basic Plan: $8.99/month</p>
           <p class="card-text">Prime Video + Amazon Prime: $12.99/month</p>
-          <p class="card-text">Shows Favorited: 0</p>
+          <p class="card-text">Shows Favorited: {{totalFavorites.amazonVideo}}</p>
           <div class="btn-center bottom">
             <button class="btn btn-light wide"
-              onclick="window.location.href='https://www.amazon.com/gp/video/getstarted?ref_=nav_em__aiv_gs_0_2_2_9';">
+              onclick="window.open('https://www.amazon.com/gp/video/getstarted?ref_=nav_em__aiv_gs_0_2_2_9');">
               Subscribe
             </button>
           </div>
