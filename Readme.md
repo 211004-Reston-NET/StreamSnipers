@@ -39,6 +39,7 @@ Then I am able to edit any of my saved information or view any previous orders I
 
 ## Technologies
 * C#
+* Angular
 * ASP.NET API
 * MS SQL 
 * Microsoft Azure
@@ -48,6 +49,7 @@ Then I am able to edit any of my saved information or view any previous orders I
 * Serilog (logging)
 * SonorCloud Code Analysis
 * Xunit (unit testing)
+* Bootswatch (Vapor)
 
 
 ## Contributors
