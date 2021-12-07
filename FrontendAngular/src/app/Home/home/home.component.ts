@@ -1,10 +1,12 @@
 import { DOCUMENT } from '@angular/common';
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { FavoriteList } from 'src/app/models/favoritelist';
 import { UserModel } from 'src/app/models/user';
 import { ImdbService } from 'src/app/services/imdb.service';
+import { StreamAPIService } from 'src/app/services/stream-api.service';
 import { WebAPIService } from 'src/app/services/web-api.service';
 
 @Component({
@@ -18,6 +20,21 @@ export class HomeComponent implements OnInit {
 
   @Output()
   isFavorite: boolean = false;
+
+StreamingInfo = {
+  netflix: false,
+  netflixName: "Netflix",
+  netflixLink: "",
+  hbo: false,
+  hboLink: "",
+  hulu: false,
+  huluLink: "",
+  disneyplus: false,
+  disneyplusLink: "",
+  amazonprime: false,
+  amazonprimeLink: ""
+
+}
 
   
 
@@ -53,7 +70,8 @@ export class HomeComponent implements OnInit {
       public auth0: AuthService,
       @Inject(DOCUMENT) public document: Document,
       public webAPI: WebAPIService,
-      private router: Router
+      private router: Router,
+      public streamAPI: StreamAPIService
     ) {
     this.webAPI.getUser()
     this.searchtext = this.imdbAPI.movieTitle;
@@ -117,6 +135,40 @@ export class HomeComponent implements OnInit {
               // changing favorite in case they click add to favorite
               this.newFavorite.name = this.movieTitleSrc;
               this.newFavorite.imdbId = this.imdbId;
+
+              this.streamAPI.streamingAvailability(this.imdbId).subscribe(
+                (result) => {
+                  console.log(result);
+                  console.log(result.streamingInfo);
+                  if (result.streamingInfo.netflix)
+                  {
+                    this.StreamingInfo.netflix = true;
+                    this.StreamingInfo.netflixLink = result.streamingInfo.netflix.us.link;
+                  }
+                  if (result.streamingInfo.hbo)
+                  {
+                    this.StreamingInfo.hbo = true;
+                    this.StreamingInfo.hboLink = result.streamingInfo.hbo.us.link;
+                  }
+                  if (result.streamingInfo.hulu)
+                  {
+                    this.StreamingInfo.hulu = true;
+                    this.StreamingInfo.huluLink = result.streamingInfo.hulu.us.link;
+                  }
+                  if (result.streamingInfo.disney)
+                  {
+                    this.StreamingInfo.disneyplus = true;
+                    this.StreamingInfo.disneyplusLink = result.streamingInfo.disney.us.link;
+                  }
+                  if (result.streamingInfo.prime)
+                  {
+                    this.StreamingInfo.amazonprime = true;
+                    this.StreamingInfo.amazonprimeLink = result.streamingInfo.prime.us.link;
+                  }
+                }
+              )
+
+
             }
           )
         }

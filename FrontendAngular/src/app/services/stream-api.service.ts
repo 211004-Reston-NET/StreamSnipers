@@ -15,6 +15,6 @@ export class StreamAPIService {
   // ex: tt0126029
   streamingAvailability(imdbId:string)
   {
-    return this.http.get(`${this.endpoint}&imdb_id=${imdbId}&rapidapi-key=${this.API_KEY}`)
+    return this.http.get<any>(`${this.endpoint}&imdb_id=${imdbId}&rapidapi-key=${this.API_KEY}`)
   }
 }
