@@ -43,7 +43,7 @@ Then I am able to edit any of my saved information or view any previous orders I
 * ASP.NET API
 * MS SQL 
 * Microsoft Azure
-* ADO.NET Entity Framwork (code first approach)
+* ADO.NET Entity Framework (code first approach)
 * LINQ
 * CI/CD Pipeline
 * Serilog (logging)
