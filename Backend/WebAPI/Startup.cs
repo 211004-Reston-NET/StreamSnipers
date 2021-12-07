@@ -24,7 +24,7 @@ namespace WebAPI
         }
 
         public IConfiguration Configuration { get; }
-
+    
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -38,12 +38,18 @@ namespace WebAPI
             services.AddScoped<IRepository, Repository>();
 
             services.AddCors(
-                (builder) => {
-                    builder.AddDefaultPolicy((policy) => {
-                        policy.WithOrigins("http://localhost:4200/", "https://stream-snipers-frontend.azurewebsites.net/")
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
-                    });
+                (options) => {
+                    options.AddPolicy(name: "_myAllowSpecificOrigins",
+                                            builder =>
+                                            {
+                                                builder.WithOrigins("http://localhost:4200/", 
+                                                                    "https://stream-snipers-frontend.azurewebsites.net/");
+                                            });
+                    // builder.AddDefaultPolicy((policy) => {
+                    //     policy.WithOrigins("http://localhost:4200/", "https://stream-snipers-frontend.azurewebsites.net/")
+                    //     .AllowAnyHeader()
+                    //     .AllowAnyMethod();
+                    // });
                 }
             );
         }
@@ -61,7 +67,7 @@ namespace WebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors("_myAllowSpecificOrigins");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
