@@ -26,16 +26,16 @@ You will be able to:
 ## User Story
 Given I am a poor soul looking to watch my favorite shows and movies at a reasonable price,   
 I want an app that allows me to see which shows and movies are on which streaming services and allows me to compare prices. 
-As a user, I should be able to Sign up for an account
-As a user, I should be able to login with a previously made account.
-As a logged in user, there should be a big search bar to find a movie.
-When a movie is found, a link should take you directly to the movie on the correct platform.
-As a logged in user, I should be able to post a review about a movie/show I searched for.
-As a logged in user, I should be able to see reviews left by other users on a particular movie.
-As a user, I should be able to review my search history.
-As a Manager, I should be able to delete reviews.
-As a user, I should be able to request for a movie recommendation based on an input.
-A user should be able to favorite a movie/show so that they can come back and find it later easily.
+- As a user, I should be able to Sign up for an account
+- As a user, I should be able to login with a previously made account.
+- As a logged in user, there should be a big search bar to find a movie.
+- When a movie is found, a link should take you directly to the movie on the correct platform.
+- As a logged in user, I should be able to post a review about a movie/show I searched for.
+- As a logged in user, I should be able to see reviews left by other users on a particular movie.
+- As a user, I should be able to review my search history.
+- As a Manager, I should be able to delete reviews.
+- As a user, I should be able to request for a movie recommendation based on an input.
+- A user should be able to favorite a movie/show so that they can come back and find it later easily.
 
 ## Technologies
 * C#
