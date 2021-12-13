@@ -5,23 +5,7 @@
 
 ## Description
 Stream Snipers is a Web App which will allow a user to find which of their favorite shows and movies are on which streaming service.
-The Database is MS SQL provided by Microsoft Azure.   
-You will be able to: 
-
-- Create an account
-- Login to an account
-- Search for a show/movie.
-- Add a show/movie to your favorites list.
-- View a list of your favorite shows.
-- View how many of your favorited shows are on a certain streaming platform.
-- Write a review for a show/movie.
-- View a list of reviews for a show/movie.
-- View recommendations based on a searched show/movie.
-- View pricing of different streaming services.
-- Access direct links to purchase streaming services.
-- Access direct links to view a show/movie on a streaming platform.
-- View an about page with information on the project and creators.
-
+At Stream Snipers you can create your own account, search for shows/movies, view pricing options, select your favorites, and view similar shows/movies. This will allow you to better decide which streaming services have the shows/movies you want and save you money.
 
 ## User Story
 Given I am a poor soul looking to watch my favorite shows and movies at a reasonable price,   
